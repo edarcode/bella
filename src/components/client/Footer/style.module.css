@@ -1,0 +1,21 @@
+.footer {
+	padding: var(--padding-md);
+	color: var(--color-gray);
+	display: grid;
+	gap: var(--gap-md);
+	font-size: 1.4rem;
+}
+.nav1,
+.wrapper {
+	display: grid;
+	gap: var(--gap-sm);
+}
+.nav2 {
+	display: flex;
+	gap: var(--gap-md);
+	justify-content: center;
+}
+
+.nav1 a {
+	border-bottom: 1px solid var(--color-gray-light);
+}
