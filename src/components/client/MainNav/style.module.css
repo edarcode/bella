@@ -1,0 +1,5 @@
+.mainNav {
+	background-color: var(--color-black);
+	opacity: 0.7;
+	min-width: 100%;
+}

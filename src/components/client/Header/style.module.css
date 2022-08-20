@@ -1,0 +1,20 @@
+.header {
+	background-color: var(--color-gray-hard);
+	padding: var(--padding-sm);
+	display: grid;
+	justify-items: start;
+	align-items: center;
+	position: relative;
+}
+
+.logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.mainNav {
+	position: absolute;
+	top: 56px;
+	min-height: calc(100vh - 56px);
+}
