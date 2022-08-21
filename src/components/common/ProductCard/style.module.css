@@ -1,0 +1,37 @@
+.card {
+	display: grid;
+	gap: var(--gap-md);
+	padding: 50px 0;
+	justify-items: center;
+}
+.wrapper1 {
+	display: grid;
+	justify-items: center;
+	gap: var(--gap-sm);
+}
+.name {
+	font-size: var(--font-size-1);
+	font-weight: 700;
+	line-height: 50px;
+	text-transform: capitalize;
+}
+.subName {
+	font-size: var(--font-size-6);
+}
+.name,
+.subName {
+	font-family: var(--font-montserrat);
+}
+.img {
+	border-radius: 2px;
+}
+.readMore {
+	display: grid;
+	place-items: center;
+	grid-auto-flow: column;
+	color: var(--color-blue);
+}
+.readMore > svg {
+	width: 15px;
+	height: 15px;
+}

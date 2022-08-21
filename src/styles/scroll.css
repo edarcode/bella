@@ -3,12 +3,12 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar:vertical {
-	width: 5px;
-	background-color: var(--blue);
+	width: 8px;
+	background-color: var(--color-gray-hard);
 }
 
 body::-webkit-scrollbar-thumb {
-	background-color: var(--blue);
+	background-color: var(--color-black);
 	width: 100%;
 	border-radius: 25px;
 }

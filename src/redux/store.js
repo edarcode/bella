@@ -1,8 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { counter } from "./slices/counter/counter";
+import { dataProducts } from "./slices-client/data-products/dataProducts.js";
 
 export const store = configureStore({
-	reducer: {
-		[counter.name]: counter.reducer
-	}
+	reducer: { [dataProducts.name]: dataProducts.reducer }
 });
