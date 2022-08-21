@@ -5,11 +5,7 @@ export default function RenderProducts({ products }) {
 	return (
 		<div>
 			{products.map(product => (
-				<ProductCard
-					key={product.id}
-					{...product}
-					img={product.images[0].img}
-				/>
+				<ProductCard key={product.id} {...product} img={product.images[0]} />
 			))}
 		</div>
 	);
