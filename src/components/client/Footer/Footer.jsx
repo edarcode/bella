@@ -16,7 +16,7 @@ export default function Footer() {
 				<a href="#">Política de privacidad</a>
 				<a href="#">Aviso legal</a>
 			</nav>
-			<SocialMedia />
+			<SocialMedia className={css.social} />
 		</footer>
 	);
 }
