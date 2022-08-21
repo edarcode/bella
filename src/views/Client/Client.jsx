@@ -7,9 +7,9 @@ export default function Client() {
 	return (
 		<div className={css.client}>
 			<Header />
-			<div className={css.outlet}>
+			<main className={css.outlet}>
 				<Outlet />
-			</div>
+			</main>
 			<Footer />
 		</div>
 	);
