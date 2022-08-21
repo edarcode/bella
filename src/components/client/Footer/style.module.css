@@ -6,6 +6,9 @@
 	gap: var(--gap-md);
 	font-size: 1.4rem;
 }
+.footer a {
+	border-bottom: 1px solid var(--color-gray-light);
+}
 .nav1,
 .wrapper {
 	display: grid;
@@ -18,9 +21,6 @@
 	justify-self: center;
 }
 
-.nav1 a {
-	border-bottom: 1px solid var(--color-gray-light);
-}
 .social {
 	justify-self: center;
 }
