@@ -1,0 +1,18 @@
+.control {
+	display: grid;
+	min-height: 100vh;
+	grid-template-columns: 50px 1fr;
+	grid-template-rows: 1fr auto;
+	grid-template-areas:
+		"aside    main"
+		"aside   footer";
+}
+.aside {
+	grid-area: aside;
+}
+.main {
+	grid-area: main;
+}
+.footer {
+	grid-area: footer;
+}

@@ -1,3 +1,3 @@
 export const client = "/";
-export const controlPanel = "/control-panel";
+export const controlPanel = "/control";
 export const home = "/";
