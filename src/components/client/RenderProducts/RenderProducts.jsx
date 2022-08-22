@@ -1,8 +1,9 @@
 import ProductCard from "../../common/ProductCard/ProductCard.jsx";
 import css from "./style.module.css";
 
-export default function RenderProducts({ products }) {
-	if (!products.length) return null;
+export default function RenderProducts({ products, loading }) {
+	if (loading) return <p>Cargando productos...</p>;
+	if (!products.length) return <p>No hay productos para mostrar</p>;
 	return (
 		<div>
 			<div className={css.wrapper1}>

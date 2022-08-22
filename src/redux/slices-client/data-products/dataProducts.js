@@ -27,8 +27,11 @@ export const dataProducts = createSlice({
 			dataProducts.products = products;
 			dataProducts.loading = false;
 			dataProducts.err = false;
+		},
+		loadingDataProducts: dataProducts => {
+			dataProducts.loading = true;
 		}
 	}
 });
 
-export const { setDataProducts } = dataProducts.actions;
+export const { setDataProducts, loadingDataProducts } = dataProducts.actions;

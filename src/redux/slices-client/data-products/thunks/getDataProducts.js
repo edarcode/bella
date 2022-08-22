@@ -1,9 +1,10 @@
 import { fetchDataProducts } from "../../../../utils/fetchs-client/fetchDataProducts.js";
-import { setDataProducts } from "../dataProducts.js";
+import { loadingDataProducts, setDataProducts } from "../dataProducts.js";
 
 export const getDataProducts = () => {
 	return async dispatch => {
 		try {
+			dispatch(loadingDataProducts());
 			const res = await fetchDataProducts();
 			dispatch(setDataProducts(res.data));
 		} catch (error) {

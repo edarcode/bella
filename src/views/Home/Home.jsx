@@ -5,7 +5,7 @@ import { getDataProducts } from "../../redux/slices-client/data-products/thunks/
 
 export default function Home() {
 	const dispatch = useDispatch();
-	const { products } = useSelector(({ dataProducts }) => dataProducts);
+	const { products, loading } = useSelector(({ dataProducts }) => dataProducts);
 
 	useEffect(() => {
 		dispatch(getDataProducts());
@@ -13,7 +13,7 @@ export default function Home() {
 
 	return (
 		<div>
-			<RenderProducts products={products} />
+			<RenderProducts products={products} loading={loading} />
 		</div>
 	);
 }
