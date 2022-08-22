@@ -1,0 +1,9 @@
+.card {
+	display: flex;
+	gap: var(--gap-sm);
+	align-items: center;
+}
+.icon {
+	width: 35px;
+	height: 35px;
+}
