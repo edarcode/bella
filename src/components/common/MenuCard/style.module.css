@@ -1,9 +1,22 @@
 .card {
+	position: relative;
 	display: flex;
 	gap: var(--gap-sm);
 	align-items: center;
+	padding: var(--padding-sm);
 }
 .icon {
 	width: 35px;
 	height: 35px;
+}
+.activeNavLink::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: calc(-1px - var(--padding-sm));
+	transform: translateY(-50%);
+	width: 5px;
+	height: 80%;
+	background-color: var(--color-white);
+	border-radius: var(--radius-sm);
 }
