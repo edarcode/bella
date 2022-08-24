@@ -3,9 +3,15 @@
 	flex-direction: column;
 	gap: var(--gap-big);
 	align-items: center;
-	padding: var(--padding-sm);
+	padding: var(--padding-md);
 	box-shadow: var(--shadow-sm);
 	border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+	background-color: var(--color-gray-hard);
+	color: var(--color-white);
+}
+.asideCollapse {
+	position: absolute;
+	height: 100vh;
 }
 .iconCollapseMenu {
 	margin-right: auto;
@@ -14,4 +20,10 @@
 .logo {
 	width: 60px;
 	height: 60px;
+}
+@media screen and (min-width: 1280px) {
+	.asideCollapse {
+		position: initial;
+		height: initial;
+	}
 }

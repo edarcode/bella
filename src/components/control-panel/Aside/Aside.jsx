@@ -7,20 +7,11 @@ import css from "./style.module.css";
 export default function Aside({ className }) {
 	const [isCollapseMenu, setIsCollapseMenu] = useState(false);
 	const newClassName = calcClassName(css, {
-		baseClassName: "aside",
+		baseClassName: isCollapseMenu ? "aside asideCollapse" : "aside",
 		className
 	});
 	return (
-		<aside
-			className={newClassName}
-			style={
-				(isCollapseMenu && {
-					position: "absolute",
-					height: "100vh"
-				}) ||
-				{}
-			}
-		>
+		<aside className={newClassName}>
 			<IconCollapseMenu
 				isCollapse={isCollapseMenu}
 				setIsCollapse={setIsCollapseMenu}
