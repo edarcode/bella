@@ -1,0 +1,9 @@
+.footer {
+	padding: var(--padding-sm);
+	color: var(--color-gray);
+	display: grid;
+	justify-items: center;
+	gap: var(--gap-md);
+	font-size: 1.4rem;
+	border-top: 1px solid var(--color-gray-light);
+}

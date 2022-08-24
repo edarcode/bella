@@ -6,5 +6,9 @@ export default function Footer({ className }) {
 		baseClassName: "footer",
 		className
 	});
-	return <footer className={newClassName}>footer</footer>;
+	return (
+		<footer className={newClassName}>
+			Colombia / Cuentas claras y el chocolate espeso 🥸
+		</footer>
+	);
 }
