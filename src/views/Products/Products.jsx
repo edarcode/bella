@@ -9,7 +9,9 @@ export default function Products() {
 	const { products } = useSelector(({ dataProducts }) => dataProducts);
 
 	useEffect(() => {
-		dispatch(getDataProducts());
+		const controller = new AbortController();
+		dispatch(getDataProducts({ signal: controller.signal }));
+		return () => controller.abort();
 	}, [dispatch]);
 	return (
 		<div className={css.products}>

@@ -10,7 +10,9 @@ export default function Home() {
 	);
 
 	useEffect(() => {
-		dispatch(getDataProducts());
+		const controller = new AbortController();
+		dispatch(getDataProducts({ signal: controller.signal }));
+		return () => controller.abort();
 	}, [dispatch]);
 
 	return (
