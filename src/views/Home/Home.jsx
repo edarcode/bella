@@ -5,7 +5,9 @@ import { getDataProducts } from "../../redux/slices-client/data-products/thunks/
 
 export default function Home() {
 	const dispatch = useDispatch();
-	const { products, loading } = useSelector(({ dataProducts }) => dataProducts);
+	const { products, loading } = useSelector(
+		({ dataProductsClient }) => dataProductsClient
+	);
 
 	useEffect(() => {
 		dispatch(getDataProducts());

@@ -1,6 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { dataProducts } from "./slices-client/data-products/dataProducts.js";
+import { dataProductsClient } from "./slices-client/data-products/dataProductsClient.js";
+import { dataProducts } from "./slices-control-panel/data-products/dataProducts.js";
 
 export const store = configureStore({
-	reducer: { [dataProducts.name]: dataProducts.reducer }
+	reducer: {
+		[dataProductsClient.name]: dataProductsClient.reducer,
+		[dataProducts.name]: dataProducts.reducer
+	}
 });

@@ -1,5 +1,5 @@
-import { fetchDataProducts } from "../../../../utils/fetchs-client/fetchDataProducts.js";
-import { loadingDataProducts, setDataProducts } from "../dataProductsClient.js";
+import { fetchDataProducts } from "../../../../utils/fetch-control-panel/fetchDataProducts.js";
+import { loadingDataProducts, setDataProducts } from "../dataProducts.js";
 
 export const getDataProducts = () => {
 	return async dispatch => {
