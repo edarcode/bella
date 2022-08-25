@@ -9,8 +9,10 @@
 	background-color: var(--color-gray-hard);
 	color: var(--color-white);
 }
+
 .asideCollapse {
 	position: absolute;
+	z-index: 10;
 	height: 100vh;
 }
 .iconCollapseMenu {

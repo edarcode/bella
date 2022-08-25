@@ -10,6 +10,7 @@ export default function Aside({ className }) {
 		baseClassName: isCollapseMenu ? "aside asideCollapse" : "aside",
 		className
 	});
+
 	return (
 		<aside className={newClassName}>
 			<IconCollapseMenu
