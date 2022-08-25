@@ -1,5 +1,7 @@
 .products {
 	display: grid;
+	grid-template-rows: 1fr auto;
+	gap: var(--gap-md);
 	justify-items: center;
 	align-items: center;
 	min-height: 100%;
