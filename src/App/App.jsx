@@ -20,7 +20,7 @@ import css from "./style.module.css";
 
 export default function App() {
 	return (
-		<div className={css.app}>
+		<div className={css.app} id="app">
 			<Routes>
 				{/* ------------------Client------------------------------ */}
 				<Route path={CLIENT} element={<Client />}>

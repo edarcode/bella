@@ -7,7 +7,7 @@ import css from "./style.module.css";
 
 export default function Products() {
 	const dispatch = useDispatch();
-	const { products, pageCount, page } = useSelector(
+	const { products, pageCount, page, loading } = useSelector(
 		({ dataProducts }) => dataProducts
 	);
 
@@ -22,7 +22,7 @@ export default function Products() {
 	};
 	return (
 		<div className={css.products}>
-			<RenderProductCards products={products} />
+			<RenderProductCards products={products} loading={loading} />
 			<Paged pageCount={pageCount} page={page} onClick={reloadProducts} />
 		</div>
 	);

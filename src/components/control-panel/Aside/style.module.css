@@ -9,11 +9,15 @@
 	background-color: var(--color-gray-hard);
 	color: var(--color-white);
 }
-
+.wrapper {
+	position: sticky;
+	top: var(--padding-sm);
+}
 .asideCollapse {
 	position: absolute;
+	top: 0;
+	bottom: 0;
 	z-index: 10;
-	height: 100vh;
 }
 .iconCollapseMenu {
 	margin-right: auto;

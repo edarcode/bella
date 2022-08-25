@@ -3,7 +3,8 @@ import css from "./style.module.css";
 
 export default function RenderProducts({ products, loading }) {
 	if (loading) return <p>Cargando productos...</p>;
-	if (!products.length) return <p>No hay productos para mostrar</p>;
+	if (!products || !products.length)
+		return <p>No hay productos para mostrar</p>;
 	return (
 		<div>
 			<div className={css.wrapper1}>

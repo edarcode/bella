@@ -13,12 +13,14 @@ export default function Aside({ className }) {
 
 	return (
 		<aside className={newClassName}>
-			<IconCollapseMenu
-				isCollapse={isCollapseMenu}
-				setIsCollapse={setIsCollapseMenu}
-				className={isCollapseMenu && css.iconCollapseMenu}
-			/>
-			<RenderMenuCards isCollapseMenu={isCollapseMenu} />
+			<div className={css.wrapper}>
+				<IconCollapseMenu
+					isCollapse={isCollapseMenu}
+					setIsCollapse={setIsCollapseMenu}
+					className={isCollapseMenu && css.iconCollapseMenu}
+				/>
+				<RenderMenuCards isCollapseMenu={isCollapseMenu} />
+			</div>
 		</aside>
 	);
 }
