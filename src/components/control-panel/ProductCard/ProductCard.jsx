@@ -1,3 +1,4 @@
+import { numberFormatPrice } from "../../../utils/numberFormatPrice.js";
 import css from "./style.module.css";
 
 export default function ProductCard({
@@ -15,8 +16,8 @@ export default function ProductCard({
 				<span className={css.name}>{name}</span>
 				<span className={css.subName}>{subName}</span>
 			</div>
-			<span className={css.stock}>{stock}</span>
-			<span>{salePrice}</span>
+			<span className={css.stock}>{stock} items</span>
+			<span>{numberFormatPrice(salePrice)}</span>
 			<span className={css.discount}>-{discount}%</span>
 		</div>
 	);

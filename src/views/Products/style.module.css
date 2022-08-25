@@ -3,5 +3,5 @@
 	justify-items: center;
 	align-items: center;
 	min-height: 100%;
-	padding: var(--padding-sm);
+	padding: var(--padding-md) var(--padding-sm);
 }
