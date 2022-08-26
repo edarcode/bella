@@ -23,7 +23,7 @@
 }
 .input::placeholder {
 	line-height: 24px;
-	color: var(--color-gray-hard);
+	color: var(--color-gray-light);
 }
 .input:focus {
 	box-shadow: var(--shadow-md);
