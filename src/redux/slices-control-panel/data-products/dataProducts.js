@@ -15,14 +15,8 @@ export const dataProducts = createSlice({
 	name: "dataProducts",
 	initialState,
 	reducers: {
-		setDataProducts: (dataProducts, { payload }) => {
-			dataProducts.productsCount = payload.productsCount;
-			dataProducts.pageCount = payload.pageCount;
-			dataProducts.productsPerPage = payload.productsPerPage;
-			dataProducts.page = payload.page;
-			dataProducts.products = payload.products;
-			dataProducts.loading = false;
-			dataProducts.err = false;
+		setDataProducts: (_, { payload }) => {
+			return { ...payload, loading: false, err: false };
 		},
 		loadingDataProducts: dataProducts => {
 			dataProducts.loading = true;

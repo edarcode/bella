@@ -11,7 +11,9 @@ export const useGetProducts = () => {
 	useEffect(() => {
 		const controller = new AbortController();
 		dispatch(getDataProducts({ signal: controller.signal }));
-		return () => controller.abort();
+		return () => {
+			controller.abort();
+		};
 	}, [dispatch]);
 
 	const reload = page => {

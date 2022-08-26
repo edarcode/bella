@@ -12,7 +12,7 @@ export const getDataProducts = ({ signal, page = 0 }) => {
 			const { data } = await fetchDataProducts(signal, { page });
 			dispatch(setDataProducts(data));
 		} catch (error) {
-			if (error.code !== "ERR_CANCELED") dispatch(errDataProducts());
+			dispatch(errDataProducts());
 		}
 	};
 };
