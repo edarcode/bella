@@ -1,0 +1,30 @@
+.label {
+	position: relative;
+}
+.loupe {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	top: 50%;
+	left: 16px;
+	transform: translateY(-50%);
+	color: var(--color-gray-light);
+	pointer-events: none;
+}
+.input {
+	background-color: var(--color-white);
+	padding: var(--padding-sm) var(--padding-md);
+	padding-left: 40px;
+	box-shadow: var(--shadow-sm);
+	border-radius: var(--radius-sm);
+	border: none;
+	outline: transparent;
+	width: 100%;
+}
+.input::placeholder {
+	line-height: 24px;
+	color: var(--color-gray-hard);
+}
+.input:focus {
+	box-shadow: var(--shadow-md);
+}

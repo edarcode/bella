@@ -1,29 +1,16 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import ProductFilteringForm from "../../components/control-panel/forms/ProductFilteringForm/ProductFilteringForm.jsx";
 import Paged from "../../components/control-panel/Paged/Paged.jsx";
 import RenderProductCards from "../../components/control-panel/RenderProductCards/RenderProductCards.jsx";
-import { getDataProducts } from "../../redux/slices-control-panel/data-products/thunks/getDataProducts.js";
+import { useGetProducts } from "../../hooks/useGetProducts.js";
 import css from "./style.module.css";
 
 export default function Products() {
-	const dispatch = useDispatch();
-	const { products, pageCount, page, loading } = useSelector(
-		({ dataProducts }) => dataProducts
-	);
-
-	useEffect(() => {
-		const controller = new AbortController();
-		dispatch(getDataProducts({ signal: controller.signal }));
-		return () => controller.abort();
-	}, [dispatch]);
-
-	const reloadProducts = page => {
-		dispatch(getDataProducts({ page }));
-	};
+	const { products, loading, pageCount, page, reload, err } = useGetProducts();
 	return (
 		<div className={css.products}>
-			<RenderProductCards products={products} loading={loading} />
-			<Paged pageCount={pageCount} page={page} onClick={reloadProducts} />
+			<ProductFilteringForm />
+			<RenderProductCards products={products} loading={loading} err={err} />
+			<Paged pageCount={pageCount} page={page} onClick={reload} />
 		</div>
 	);
 }

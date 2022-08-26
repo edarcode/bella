@@ -15,8 +15,6 @@ export const dataProducts = createSlice({
 	initialState,
 	reducers: {
 		setDataProducts: (dataProducts, action) => {
-			if (!action.payload) return { ...dataProducts, err: "Ocurrió un error" };
-
 			const { productsCount, pageCount, productsPerPage, page, products } =
 				action.payload;
 
@@ -30,8 +28,13 @@ export const dataProducts = createSlice({
 		},
 		loadingDataProducts: dataProducts => {
 			dataProducts.loading = true;
+		},
+		errDataProducts: dataProducts => {
+			dataProducts.loading = false;
+			dataProducts.err = "Ocurrió un error";
 		}
 	}
 });
 
-export const { setDataProducts, loadingDataProducts } = dataProducts.actions;
+export const { setDataProducts, loadingDataProducts, errDataProducts } =
+	dataProducts.actions;
