@@ -11,6 +11,8 @@ export default function Aside({ className }) {
 		className
 	});
 
+	const contractMenu = () => setIsCollapseMenu(false);
+
 	return (
 		<aside className={newClassName}>
 			<div className={css.wrapper}>
@@ -19,7 +21,10 @@ export default function Aside({ className }) {
 					setIsCollapse={setIsCollapseMenu}
 					className={isCollapseMenu && css.iconCollapseMenu}
 				/>
-				<RenderMenuCards isCollapseMenu={isCollapseMenu} />
+				<RenderMenuCards
+					isCollapseMenu={isCollapseMenu}
+					contractMenu={contractMenu}
+				/>
 			</div>
 		</aside>
 	);
