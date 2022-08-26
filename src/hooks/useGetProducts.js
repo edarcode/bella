@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataProducts } from "../redux/slices-control-panel/data-products/thunks/getDataProducts.js";
+import { reloadDataProducts } from "../redux/slices-control-panel/data-products/thunks/reloadDataProducts.js";
 
 export const useGetProducts = () => {
 	const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const useGetProducts = () => {
 	}, [dispatch]);
 
 	const reload = page => {
-		dispatch(getDataProducts({ page }));
+		dispatch(reloadDataProducts({ page }));
 	};
 
 	return { products, pageCount, page, loading, err, reload };
