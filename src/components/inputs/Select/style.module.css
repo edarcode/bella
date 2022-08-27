@@ -17,6 +17,9 @@
 .select:focus {
 	box-shadow: var(--shadow-md);
 }
+.select option {
+	text-transform: capitalize;
+}
 .arrow {
 	position: absolute;
 	top: 50%;
