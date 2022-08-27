@@ -1,0 +1,7 @@
+.wrapper {
+	display: grid;
+	place-items: center;
+}
+.price {
+	font-size: var(--font-size-9);
+}
