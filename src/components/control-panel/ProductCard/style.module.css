@@ -39,17 +39,16 @@
 	padding: 4px var(--padding-md);
 }
 .stock {
-	right: 70px;
+	right: 90px;
 }
 .discount {
 	right: 8px;
+	min-width: 78px;
+	text-align: center;
 }
 @media screen and (min-width: 768px) {
 	.card {
 		font-size: 1.6rem;
-	}
-	.stock {
-		right: 77px;
 	}
 	.img {
 		width: 50px;

@@ -1,5 +1,6 @@
+import Paged from "../../components/common/Paged/Paged.jsx";
 import FormFilterProducts from "../../components/control-panel/forms/FormFilterProducts/FormFilterProducts.jsx";
-import Paged from "../../components/control-panel/Paged/Paged.jsx";
+
 import RenderProductCards from "../../components/control-panel/RenderProductCards/RenderProductCards.jsx";
 import { useGetProducts } from "../../hooks/useGetProducts.js";
 import css from "./style.module.css";
