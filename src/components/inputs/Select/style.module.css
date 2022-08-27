@@ -13,6 +13,8 @@
 	background-color: var(--color-white);
 	border-radius: var(--radius-sm);
 	cursor: pointer;
+	position: relative;
+	z-index: 20;
 }
 .select:focus {
 	box-shadow: var(--shadow-md);
@@ -24,8 +26,24 @@
 	position: absolute;
 	top: 50%;
 	right: 16px;
+	z-index: 30;
 	width: 24px;
 	height: 24px;
 	transform: translateY(-50%);
 	pointer-events: none;
+}
+.directionSort {
+	position: absolute;
+	top: 0;
+	right: 8px;
+	z-index: 10;
+	transform: translateY(-80%);
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow-sm);
+	padding: 2px var(--padding-sm);
+	background-color: var(--color-white);
+	font-size: var(--font-size-9);
+	min-width: 60px;
+	text-align: center;
+	cursor: pointer;
 }

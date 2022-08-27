@@ -2,13 +2,26 @@ import { calcClassName } from "../../../utils/calcClassName.js";
 import ArrowDown from "../../icons/ArrowDown.jsx";
 import css from "./style.module.css";
 
-export default function Select({ className, ...props }) {
+export default function Select({
+	className,
+	directionSort,
+	onDirectionSort,
+	...props
+}) {
 	const finallyClassName = calcClassName(css, {
 		baseClassName: "wrapper",
 		className
 	});
 	return (
-		<div className={finallyClassName}>
+		<div
+			className={finallyClassName}
+			style={(directionSort && { marginTop: "31px" }) || {}}
+		>
+			{directionSort && (
+				<span className={css.directionSort} onClick={onDirectionSort}>
+					{directionSort}
+				</span>
+			)}
 			<select {...props} className={css.select}></select>
 			<ArrowDown className={css.arrow} />
 		</div>
