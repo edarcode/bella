@@ -5,13 +5,17 @@ import {
 	setDataProducts
 } from "../dataProducts.js";
 
-export const getDataProducts = signal => {
+export const getDataProducts = (signal, filters) => {
 	return async dispatch => {
 		try {
-			dispatch(loadingDataProducts());
-			const { data } = await fetchDataProducts(signal);
+			!filters.page && dispatch(loadingDataProducts());
+			const { data } = await fetchDataProducts(signal, filters);
 			dispatch(setDataProducts(data));
 		} catch (error) {
+			const {
+				response: { status }
+			} = error;
+			if (status === 404) return dispatch(errDataProducts(404));
 			dispatch(errDataProducts());
 		}
 	};

@@ -1,9 +1,9 @@
 import ReactPaginate from "react-paginate";
 import css from "./style.module.css";
 
-export default function Paged({ pageCount, page, onClick }) {
+export default function Paged({ pageCount, page, updatePage }) {
 	const handleChangePage = ({ selected }) => {
-		onClick(selected);
+		updatePage(selected);
 		window.scroll({ top: 0 });
 	};
 

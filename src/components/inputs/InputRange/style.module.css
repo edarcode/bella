@@ -1,6 +1,8 @@
 .wrapper {
 	display: grid;
-	place-items: center;
+	grid-auto-flow: column;
+	grid-template-columns: 1fr 1fr;
+	padding: var(--padding-sm);
 }
 .price {
 	font-size: var(--font-size-9);

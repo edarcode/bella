@@ -6,12 +6,13 @@ import { useGetProducts } from "../../hooks/useGetProducts.js";
 import css from "./style.module.css";
 
 export default function Products() {
-	const { products, loading, pageCount, page, reload, err } = useGetProducts();
+	const { products, loading, pageCount, page, err, updatePage } =
+		useGetProducts();
 	return (
 		<div className={css.products}>
 			<WrapperFormProducts />
 			<RenderProductCards products={products} loading={loading} err={err} />
-			<Paged pageCount={pageCount} page={page} onClick={reload} />
+			<Paged pageCount={pageCount} page={page} updatePage={updatePage} />
 		</div>
 	);
 }

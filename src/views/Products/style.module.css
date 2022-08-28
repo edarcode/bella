@@ -1,9 +1,8 @@
 .products {
 	display: grid;
-	grid-template-rows: 1fr auto;
+	place-items: center;
+	grid-template-rows: auto 1fr auto;
 	gap: var(--gap-md);
-	justify-items: center;
-	align-items: center;
 	min-height: 100%;
 	padding: var(--padding-md) var(--padding-sm);
 }
