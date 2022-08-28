@@ -5,34 +5,34 @@ import { getDataProducts } from "../redux/slices-control-panel/data-products/thu
 
 export const useGetProducts = () => {
 	const dispatch = useDispatch();
-	const { products, pageCount, page, loading, err, filters } = useSelector(
-		({ dataProducts }) => dataProducts
-	);
+	const {
+		products,
+		pageCount,
+		page,
+		loading,
+		err,
+		filters: { name, minSalePrice, maxSalePrice, order }
+	} = useSelector(({ dataProducts }) => dataProducts);
 
 	useEffect(() => {
 		const controller = new AbortController();
-		dispatch(getDataProducts(controller.signal, { page }));
+		dispatch(getDataProducts(controller.signal, { page, order }));
 
-		return () => {
-			controller.abort();
-		};
-	}, [dispatch, page]);
+		return () => controller.abort();
+	}, [dispatch, order, page]);
 
 	useEffect(() => {
 		const controller = new AbortController();
 		const timeoutId = setTimeout(() => {
-			dispatch(
-				getDataProducts(controller.signal, {
-					minSalePrice: filters.minSalePrice,
-					maxSalePrice: filters.maxSalePrice
-				})
-			);
+			const filters = { name, minSalePrice, maxSalePrice };
+			dispatch(getDataProducts(controller.signal, filters));
 		}, 400);
+
 		return () => {
 			clearTimeout(timeoutId);
 			controller.abort();
 		};
-	}, [dispatch, filters.minSalePrice, filters.maxSalePrice]);
+	}, [dispatch, name, minSalePrice, maxSalePrice]);
 
 	const updatePage = page => {
 		dispatch(changePage(page));

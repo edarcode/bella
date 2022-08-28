@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { MAX_PRICE_RANGE } from "../../../../constants/priceRange.js";
 import {
 	changeMaxSalePrice,
 	changeMinSalePrice
@@ -27,12 +28,12 @@ export default function RangePriceProduct() {
 				text="$ Min"
 				value={minSalePrice}
 				onChange={handleChangeMinSalePrice}
-				max={800000}
+				max={MAX_PRICE_RANGE}
 			/>
 			<InputRange
 				text="$ Max"
 				value={maxSalePrice}
-				max={800000}
+				max={MAX_PRICE_RANGE}
 				onChange={handleChangeMaxSalePrice}
 			/>
 		</div>

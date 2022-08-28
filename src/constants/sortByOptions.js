@@ -1,22 +1,26 @@
 export const SORT_BY_OPTIONS = [
 	{
 		id: crypto.randomUUID(),
-		value: "default",
+		asc: '["id","asc"]',
+		desc: '["id","desc"]',
 		display: "Defecto"
 	},
 	{
 		id: crypto.randomUUID(),
-		value: '["name","asc"]',
+		asc: '["name","asc"]',
+		desc: '["name","desc"]',
 		display: "Nombre"
 	},
 	{
 		id: crypto.randomUUID(),
-		value: '["salePrice","asc"]',
+		asc: '["salePrice","asc"]',
+		desc: '["salePrice","desc"]',
 		display: "Precio"
 	},
 	{
 		id: crypto.randomUUID(),
-		value: '["stock","asc"]',
+		asc: '["stock","asc"]',
+		desc: '["stock","desc"]',
 		display: "Items"
 	}
 ];

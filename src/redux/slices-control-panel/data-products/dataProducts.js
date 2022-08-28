@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ERR } from "../../../constants/msgs.js";
+import { SORT_BY_OPTIONS } from "../../../constants/sortByOptions.js";
 
 const initialState = {
 	productsCount: 0,
@@ -12,7 +13,7 @@ const initialState = {
 	filters: {
 		name: "",
 		active: null,
-		order: null,
+		order: SORT_BY_OPTIONS[0].asc,
 		productsPerPage: 6,
 		minSalePrice: 0,
 		maxSalePrice: 0,
@@ -25,7 +26,12 @@ export const dataProducts = createSlice({
 	initialState,
 	reducers: {
 		setDataProducts: (dataProducts, { payload }) => {
-			return { ...dataProducts, ...payload, loading: false, err: false };
+			return {
+				...dataProducts,
+				...payload,
+				loading: false,
+				err: false
+			};
 		},
 		loadingDataProducts: dataProducts => {
 			dataProducts.loading = true;
@@ -41,9 +47,19 @@ export const dataProducts = createSlice({
 		},
 		changeMinSalePrice: (dataProducts, { payload }) => {
 			dataProducts.filters.minSalePrice = payload;
+			dataProducts.page = 0;
 		},
 		changeMaxSalePrice: (dataProducts, { payload }) => {
 			dataProducts.filters.maxSalePrice = payload;
+			dataProducts.page = 0;
+		},
+		changeName: (dataProducts, { payload }) => {
+			dataProducts.filters.name = payload;
+			dataProducts.page = 0;
+		},
+		changeOrder: (dataProducts, { payload }) => {
+			dataProducts.filters.order = payload;
+			dataProducts.page = 0;
 		}
 	}
 });
@@ -54,5 +70,7 @@ export const {
 	errDataProducts,
 	changePage,
 	changeMinSalePrice,
-	changeMaxSalePrice
+	changeMaxSalePrice,
+	changeName,
+	changeOrder
 } = dataProducts.actions;
