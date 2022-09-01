@@ -18,7 +18,7 @@ const initialState = {
 		productsPerPage: 6,
 		minSalePrice: 0,
 		maxSalePrice: 0,
-		categoryId: null
+		categoryId: "default"
 	}
 };
 
@@ -65,6 +65,10 @@ export const dataProducts = createSlice({
 		changeActive: (dataProducts, { payload }) => {
 			dataProducts.filters.active = payload;
 			dataProducts.page = 0;
+		},
+		changeCategoryId: (dataProducts, { payload }) => {
+			dataProducts.filters.categoryId = payload;
+			dataProducts.page = 0;
 		}
 	}
 });
@@ -78,5 +82,6 @@ export const {
 	changeMaxSalePrice,
 	changeName,
 	changeOrder,
-	changeActive
+	changeActive,
+	changeCategoryId
 } = dataProducts.actions;

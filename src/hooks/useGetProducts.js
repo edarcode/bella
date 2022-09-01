@@ -14,26 +14,28 @@ export const useGetProducts = () => {
 		page,
 		loading,
 		err,
-		filters: { name, minSalePrice, maxSalePrice, order, active }
+		filters: { name, minSalePrice, maxSalePrice, order, active, categoryId }
 	} = useSelector(({ dataProducts }) => dataProducts);
 
 	useEffect(() => {
 		const controller = new AbortController();
 		const isActiveDefault = active === STATUS_OPTIONS[0].value;
+		const isCategoryIdDefault = categoryId === "default";
 		dispatch(
 			getDataProducts(
 				controller.signal,
 				{
 					page,
 					order,
-					active: !isActiveDefault ? active : null
+					active: !isActiveDefault ? active : null,
+					categoryId: !isCategoryIdDefault ? categoryId : null
 				},
 				isFirstRender
 			)
 		);
 
 		return () => controller.abort();
-	}, [dispatch, order, active, page]);
+	}, [dispatch, order, active, page, categoryId]);
 
 	useEffect(() => {
 		if (isFirstRender) return;
