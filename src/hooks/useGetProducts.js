@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { STATUS_OPTIONS } from "../constants/statusOptions.js";
 import { changePage } from "../redux/slices-control-panel/data-products/dataProducts.js";
 import { getDataProducts } from "../redux/slices-control-panel/data-products/thunks/getDataProducts.js";
+
+let isFirstRender = true;
 
 export const useGetProducts = () => {
 	const dispatch = useDispatch();
@@ -11,21 +14,33 @@ export const useGetProducts = () => {
 		page,
 		loading,
 		err,
-		filters: { name, minSalePrice, maxSalePrice, order }
+		filters: { name, minSalePrice, maxSalePrice, order, active }
 	} = useSelector(({ dataProducts }) => dataProducts);
 
 	useEffect(() => {
 		const controller = new AbortController();
-		dispatch(getDataProducts(controller.signal, { page, order }));
+		const isActiveDefault = active === STATUS_OPTIONS[0].value;
+		dispatch(
+			getDataProducts(
+				controller.signal,
+				{
+					page,
+					order,
+					active: !isActiveDefault ? active : null
+				},
+				isFirstRender
+			)
+		);
 
 		return () => controller.abort();
-	}, [dispatch, order, page]);
+	}, [dispatch, order, active, page]);
 
 	useEffect(() => {
+		if (isFirstRender) return;
 		const controller = new AbortController();
 		const timeoutId = setTimeout(() => {
 			const filters = { name, minSalePrice, maxSalePrice };
-			dispatch(getDataProducts(controller.signal, filters));
+			dispatch(getDataProducts(controller.signal, filters, isFirstRender));
 		}, 400);
 
 		return () => {
@@ -33,6 +48,10 @@ export const useGetProducts = () => {
 			controller.abort();
 		};
 	}, [dispatch, name, minSalePrice, maxSalePrice]);
+
+	useEffect(() => {
+		isFirstRender = false;
+	}, []);
 
 	const updatePage = page => {
 		dispatch(changePage(page));

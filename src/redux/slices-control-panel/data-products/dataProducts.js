@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ERR } from "../../../constants/msgs.js";
 import { SORT_BY_OPTIONS } from "../../../constants/sortByOptions.js";
+import { STATUS_OPTIONS } from "../../../constants/statusOptions.js";
 
 const initialState = {
 	productsCount: 0,
@@ -12,7 +13,7 @@ const initialState = {
 	err: false,
 	filters: {
 		name: "",
-		active: null,
+		active: STATUS_OPTIONS[0].value,
 		order: SORT_BY_OPTIONS[0].asc,
 		productsPerPage: 6,
 		minSalePrice: 0,
@@ -60,6 +61,10 @@ export const dataProducts = createSlice({
 		changeOrder: (dataProducts, { payload }) => {
 			dataProducts.filters.order = payload;
 			dataProducts.page = 0;
+		},
+		changeActive: (dataProducts, { payload }) => {
+			dataProducts.filters.active = payload;
+			dataProducts.page = 0;
 		}
 	}
 });
@@ -72,5 +77,6 @@ export const {
 	changeMinSalePrice,
 	changeMaxSalePrice,
 	changeName,
-	changeOrder
+	changeOrder,
+	changeActive
 } = dataProducts.actions;
