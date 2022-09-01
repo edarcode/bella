@@ -5,10 +5,10 @@ import {
 	setDataProducts
 } from "../dataProducts.js";
 
-export const getDataProducts = (signal, filters) => {
+export const getDataProducts = (signal, filters, isFirstRender) => {
 	return async dispatch => {
 		try {
-			!filters.page && dispatch(loadingDataProducts());
+			isFirstRender && dispatch(loadingDataProducts());
 			const { data } = await fetchDataProducts(signal, filters);
 			dispatch(setDataProducts(data));
 		} catch (error) {
