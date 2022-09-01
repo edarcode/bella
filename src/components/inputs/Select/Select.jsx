@@ -15,7 +15,7 @@ export default function Select({
 	return (
 		<div
 			className={finallyClassName}
-			style={(directionSort && { marginTop: "31px" }) || {}}
+			style={(directionSort && { marginTop: "22px" }) || {}}
 		>
 			{directionSort && (
 				<span className={css.directionSort} onClick={onDirectionSort}>

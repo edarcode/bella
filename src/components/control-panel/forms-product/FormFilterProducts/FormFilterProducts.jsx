@@ -10,10 +10,14 @@ export default function FormFilterProducts() {
 	return (
 		<form className={css.form}>
 			<InputSearchName />
-			<SelectSortProduct />
-			<SelectStateProduct />
-			<SelectCategoryProduct />
-			<RangePriceProduct />
+			<div className={css.filters}>
+				<SelectSortProduct />
+				<div className={css.wrapper1}>
+					<SelectStateProduct />
+					<SelectCategoryProduct />
+				</div>
+				<RangePriceProduct />
+			</div>
 		</form>
 	);
 }
