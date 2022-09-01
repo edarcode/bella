@@ -69,6 +69,10 @@ export const dataProducts = createSlice({
 		changeCategoryId: (dataProducts, { payload }) => {
 			dataProducts.filters.categoryId = payload;
 			dataProducts.page = 0;
+		},
+		resetSalePrice: (dataProducts, { payload }) => {
+			dataProducts.filters.minSalePrice = 0;
+			dataProducts.filters.maxSalePrice = 0;
 		}
 	}
 });
@@ -83,5 +87,6 @@ export const {
 	changeName,
 	changeOrder,
 	changeActive,
-	changeCategoryId
+	changeCategoryId,
+	resetSalePrice
 } = dataProducts.actions;

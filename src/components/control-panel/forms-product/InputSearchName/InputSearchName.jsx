@@ -1,13 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useDebounce } from "../../../../hooks/useDebounce.js";
 import { changeName } from "../../../../redux/slices-control-panel/data-products/dataProducts.js";
 import InputSearch from "../../../inputs/InputSearch/InputSearch.jsx";
 
 export default function InputSearchName() {
 	const dispatch = useDispatch();
-	const { name } = useSelector(({ dataProducts }) => dataProducts.filters);
+	const [name, setName] = useState("");
+	const nameDebounce = useDebounce(name);
+
+	useEffect(() => {
+		dispatch(changeName(nameDebounce));
+	}, [dispatch, nameDebounce]);
+
 	const handleChangeName = e => {
 		const name = e.target.value;
-		dispatch(changeName(name));
+		setName(name);
 	};
 	return (
 		<InputSearch

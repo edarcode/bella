@@ -8,48 +8,30 @@ let isFirstRender = true;
 
 export const useGetProducts = () => {
 	const dispatch = useDispatch();
-	const {
-		products,
-		pageCount,
-		page,
-		loading,
-		err,
-		filters: { name, minSalePrice, maxSalePrice, order, active, categoryId }
-	} = useSelector(({ dataProducts }) => dataProducts);
+	const { products, pageCount, page, loading, err, filters } = useSelector(
+		({ dataProducts }) => dataProducts
+	);
 
 	useEffect(() => {
 		const controller = new AbortController();
-		const isActiveDefault = active === STATUS_OPTIONS[0].value;
-		const isCategoryIdDefault = categoryId === "default";
+		const isActiveDefault = filters.active === STATUS_OPTIONS[0].value;
+		const isCategoryIdDefault = filters.categoryId === "default";
+
 		dispatch(
 			getDataProducts(
 				controller.signal,
 				{
+					...filters,
 					page,
-					order,
-					active: !isActiveDefault ? active : null,
-					categoryId: !isCategoryIdDefault ? categoryId : null
+					active: !isActiveDefault ? filters.active : null,
+					categoryId: !isCategoryIdDefault ? filters.categoryId : null
 				},
 				isFirstRender
 			)
 		);
 
 		return () => controller.abort();
-	}, [dispatch, order, active, page, categoryId]);
-
-	useEffect(() => {
-		if (isFirstRender) return;
-		const controller = new AbortController();
-		const timeoutId = setTimeout(() => {
-			const filters = { name, minSalePrice, maxSalePrice };
-			dispatch(getDataProducts(controller.signal, filters, isFirstRender));
-		}, 400);
-
-		return () => {
-			clearTimeout(timeoutId);
-			controller.abort();
-		};
-	}, [dispatch, name, minSalePrice, maxSalePrice]);
+	}, [dispatch, filters, page]);
 
 	useEffect(() => {
 		isFirstRender = false;

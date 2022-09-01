@@ -1,38 +1,51 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { MAX_PRICE_RANGE } from "../../../../constants/priceRange.js";
+import { useDebounce } from "../../../../hooks/useDebounce.js";
 import {
 	changeMaxSalePrice,
-	changeMinSalePrice
+	changeMinSalePrice,
+	resetSalePrice
 } from "../../../../redux/slices-control-panel/data-products/dataProducts.js";
 import InputRange from "../../../inputs/InputRange/InputRange.jsx";
 
 export default function RangePriceProduct() {
 	const dispatch = useDispatch();
-	const { minSalePrice, maxSalePrice } = useSelector(
-		({ dataProducts }) => dataProducts.filters
-	);
+	const [rangePriceProduct, setRangePriceProduct] = useState({
+		minSalePrice: 0,
+		maxSalePrice: 0
+	});
+	const rangePriceProductDebounce = useDebounce(rangePriceProduct);
+
+	useEffect(() => {
+		const { minSalePrice, maxSalePrice } = rangePriceProductDebounce;
+		dispatch(changeMinSalePrice(minSalePrice));
+		dispatch(changeMaxSalePrice(maxSalePrice));
+
+		return () => dispatch(resetSalePrice());
+	}, [dispatch, rangePriceProductDebounce]);
 
 	const handleChangeMinSalePrice = e => {
-		const price = Number(e.target.value);
-		dispatch(changeMinSalePrice(price));
+		const minSalePrice = Number(e.target.value);
+		setRangePriceProduct({ ...rangePriceProduct, minSalePrice });
 	};
 
 	const handleChangeMaxSalePrice = e => {
-		const price = Number(e.target.value);
-		dispatch(changeMaxSalePrice(price));
+		const maxSalePrice = Number(e.target.value);
+		setRangePriceProduct({ ...rangePriceProduct, maxSalePrice });
 	};
 
 	return (
 		<div>
 			<InputRange
 				text="$ Min"
-				value={minSalePrice}
-				onChange={handleChangeMinSalePrice}
+				value={rangePriceProduct.minSalePrice}
 				max={MAX_PRICE_RANGE}
+				onChange={handleChangeMinSalePrice}
 			/>
 			<InputRange
 				text="$ Max"
-				value={maxSalePrice}
+				value={rangePriceProduct.maxSalePrice}
 				max={MAX_PRICE_RANGE}
 				onChange={handleChangeMaxSalePrice}
 			/>
