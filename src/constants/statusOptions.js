@@ -1,7 +1,9 @@
+import { DEFAULT } from "./default.js";
+
 export const STATUS_OPTIONS = [
 	{
 		id: crypto.randomUUID(),
-		value: "default",
+		value: DEFAULT,
 		display: "Todos"
 	},
 	{

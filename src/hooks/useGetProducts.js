@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { STATUS_OPTIONS } from "../constants/statusOptions.js";
+import { DEFAULT } from "../constants/default.js";
 import { changePage } from "../redux/slices-control-panel/data-products/dataProducts.js";
 import { getDataProducts } from "../redux/slices-control-panel/data-products/thunks/getDataProducts.js";
 
@@ -14,8 +14,8 @@ export const useGetProducts = () => {
 
 	useEffect(() => {
 		const controller = new AbortController();
-		const isActiveDefault = filters.active === STATUS_OPTIONS[0].value;
-		const isCategoryIdDefault = filters.categoryId === "default";
+		const isActiveDefault = filters.active === DEFAULT;
+		const isCategoryIdDefault = filters.categoryId === DEFAULT;
 
 		dispatch(
 			getDataProducts(
