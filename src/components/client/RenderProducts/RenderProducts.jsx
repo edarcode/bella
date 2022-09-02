@@ -1,8 +1,9 @@
 import ProductCard from "../../common/ProductCard/ProductCard.jsx";
 import css from "./style.module.css";
 
-export default function RenderProducts({ products, loading }) {
-	if (loading) return <p>Cargando productos...</p>;
+export default function RenderProducts({ products, loading, err }) {
+	if (loading) return <p>Cargando...</p>;
+	if (err) return <p>Error al cargar productos 😰</p>;
 	if (!products || !products.length)
 		return <p>No hay productos para mostrar</p>;
 	return (

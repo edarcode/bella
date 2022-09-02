@@ -1,14 +1,18 @@
 import { fetchDataProducts } from "../../../../utils/fetchs-client/fetchDataProducts.js";
-import { loadingDataProducts, setDataProducts } from "../dataProductsClient.js";
+import {
+	errDataProducts,
+	loadingDataProducts,
+	setDataProducts
+} from "../dataProductsClient.js";
 
-export const getDataProducts = ({ signal }) => {
+export const getDataProducts = (signal, filters) => {
 	return async dispatch => {
 		try {
 			dispatch(loadingDataProducts());
-			const res = await fetchDataProducts(signal);
-			dispatch(setDataProducts(res.data));
+			const { data } = await fetchDataProducts(signal, filters);
+			dispatch(setDataProducts(data));
 		} catch (error) {
-			dispatch(setDataProducts(null));
+			dispatch(errDataProducts());
 		}
 	};
 };

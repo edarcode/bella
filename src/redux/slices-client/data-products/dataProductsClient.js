@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ERR } from "../../../constants/msgs.js";
 
 const initialState = {
 	productsCount: 0,
@@ -14,25 +15,19 @@ export const dataProductsClient = createSlice({
 	name: "dataProductsClient",
 	initialState,
 	reducers: {
-		setDataProducts: (dataProducts, action) => {
-			if (!action.payload) return { ...dataProducts, err: "Ocurrió un error" };
-
-			const { productsCount, pageCount, productsPerPage, page, products } =
-				action.payload;
-
-			dataProducts.productsCount = productsCount;
-			dataProducts.pageCount = pageCount;
-			dataProducts.productsPerPage = productsPerPage;
-			dataProducts.page = page;
-			dataProducts.products = products;
-			dataProducts.loading = false;
-			dataProducts.err = false;
+		setDataProducts: (_, { payload }) => {
+			return { ...payload, loading: false, err: false };
 		},
 		loadingDataProducts: dataProducts => {
 			dataProducts.loading = true;
+			dataProducts.err = false;
+		},
+		errDataProducts: dataProducts => {
+			dataProducts.loading = false;
+			dataProducts.err = ERR;
 		}
 	}
 });
 
-export const { setDataProducts, loadingDataProducts } =
+export const { setDataProducts, loadingDataProducts, errDataProducts } =
 	dataProductsClient.actions;
