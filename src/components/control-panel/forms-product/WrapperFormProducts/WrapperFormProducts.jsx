@@ -15,6 +15,7 @@ export default function WrapperFormProducts({ className }) {
 	};
 	useEffect(() => {
 		if (widthWindow >= 920) setIsCollapseFilters(true);
+		else setIsCollapseFilters(false);
 	}, [widthWindow]);
 
 	const finallyClassName = calcClassName(css, {

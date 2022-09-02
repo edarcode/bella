@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { MAX_PRICE_RANGE } from "../../../../constants/priceRange.js";
-import { useDebounce } from "../../../../hooks/useDebounce.js";
 import {
 	changeMaxSalePrice,
-	changeMinSalePrice,
-	resetSalePrice
+	changeMinSalePrice
 } from "../../../../redux/slices-control-panel/data-products/dataProducts.js";
 import InputRange from "../../../inputs/InputRange/InputRange.jsx";
 
@@ -15,15 +13,16 @@ export default function RangePriceProduct() {
 		minSalePrice: 0,
 		maxSalePrice: 0
 	});
-	const rangePriceProductDebounce = useDebounce(rangePriceProduct);
 
 	useEffect(() => {
-		const { minSalePrice, maxSalePrice } = rangePriceProductDebounce;
-		dispatch(changeMinSalePrice(minSalePrice));
-		dispatch(changeMaxSalePrice(maxSalePrice));
+		const timeoutId = setTimeout(() => {
+			const { minSalePrice, maxSalePrice } = rangePriceProduct;
+			dispatch(changeMinSalePrice(minSalePrice));
+			dispatch(changeMaxSalePrice(maxSalePrice));
+		}, 500);
 
-		return () => dispatch(resetSalePrice());
-	}, [dispatch, rangePriceProductDebounce]);
+		return () => clearTimeout(timeoutId);
+	}, [dispatch, rangePriceProduct]);
 
 	const handleChangeMinSalePrice = e => {
 		const minSalePrice = Number(e.target.value);
@@ -38,13 +37,13 @@ export default function RangePriceProduct() {
 	return (
 		<div>
 			<InputRange
-				text="$ Min"
+				text="Min"
 				value={rangePriceProduct.minSalePrice}
 				max={MAX_PRICE_RANGE}
 				onChange={handleChangeMinSalePrice}
 			/>
 			<InputRange
-				text="$ Max"
+				text="Max"
 				value={rangePriceProduct.maxSalePrice}
 				max={MAX_PRICE_RANGE}
 				onChange={handleChangeMaxSalePrice}

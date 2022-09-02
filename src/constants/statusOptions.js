@@ -4,7 +4,7 @@ export const STATUS_OPTIONS = [
 	{
 		id: crypto.randomUUID(),
 		value: DEFAULT,
-		display: "Todos"
+		display: "Estado"
 	},
 	{
 		id: crypto.randomUUID(),

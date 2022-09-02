@@ -1,9 +1,17 @@
 .wrapper {
 	display: grid;
+	gap: var(--gap-md);
 	grid-auto-flow: column;
-	grid-template-columns: 1fr 1fr;
-	padding: var(--padding-sm);
+	grid-template-columns: auto 1fr;
+	padding: var(--padding-md) var(--padding-sm);
+	position: relative;
 }
+.text,
 .price {
 	font-size: var(--font-size-9);
+}
+.price {
+	position: absolute;
+	top: 0;
+	right: 9px;
 }

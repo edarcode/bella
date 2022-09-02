@@ -12,7 +12,7 @@ export default function SelectCategoryProduct() {
 	};
 	return (
 		<Select onChange={handleChangeCategoryId}>
-			<option value="default">Defecto</option>
+			<option value="default">Categoría</option>
 			{allCategories.map(({ id, name }) => (
 				<option key={id} value={id}>
 					{name}

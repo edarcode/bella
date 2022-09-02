@@ -3,7 +3,7 @@ export const SORT_BY_OPTIONS = [
 		id: crypto.randomUUID(),
 		asc: '["id","asc"]',
 		desc: '["id","desc"]',
-		display: "Defecto"
+		display: "Orden"
 	},
 	{
 		id: crypto.randomUUID(),
