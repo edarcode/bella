@@ -2,6 +2,6 @@
 	display: grid;
 	gap: var(--gap-large);
 	width: 100%;
-	max-width: 400px;
+	max-width: 550px;
 	padding-top: 25px;
 }

@@ -1,25 +1,27 @@
 .form {
 	display: grid;
 	gap: var(--gap-md);
-}
-.filters {
 	position: relative;
-	display: grid;
-	gap: var(--gap-sm);
 	box-shadow: var(--shadow-md);
 	border-radius: var(--radius-md);
-	padding: 24px;
+	padding: var(--padding-big);
 }
+
 .close {
 	position: absolute;
 	top: var(--padding-sm);
 	left: var(--padding-sm);
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	color: var(--color-blue);
 	cursor: pointer;
 }
-.wrapper1 {
-	display: grid;
-	gap: var(--gap-sm);
+@media screen and (min-width: 920px) {
+	.form {
+		box-shadow: initial;
+		padding: var(--padding-md);
+	}
+	.close {
+		display: none;
+	}
 }
