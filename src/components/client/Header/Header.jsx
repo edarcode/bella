@@ -15,7 +15,7 @@ export default function Header() {
 				className={css.iconMenu}
 			/>
 			<Logo className={css.logo} />
-			{isActiveMainNav && <MainNav className={css.mainNav} />}
+			<MainNav className={css.mainNav} isActive={isActiveMainNav} />
 		</header>
 	);
 }

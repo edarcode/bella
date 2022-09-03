@@ -1,5 +1,14 @@
 .mainNav {
-	background-color: var(--color-black);
-	opacity: 0.7;
 	min-width: 100%;
+	display: flex;
+	gap: var(--gap-sm);
+	flex-direction: column;
+	padding: var(--padding-md);
+	background-color: var(--color-white);
+}
+.link {
+	margin-right: auto;
+}
+.activeLink {
+	border-bottom: 1px solid var(--color-gray);
 }
