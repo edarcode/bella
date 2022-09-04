@@ -4,7 +4,7 @@ import { calcClassName } from "../../../utils/calcClassName.js";
 import { isActiveNavLink } from "../../../utils/isActiveNavLink.js";
 import css from "./style.module.css";
 
-export default function MainNav({ className, isActive }) {
+export default function MainNav({ className, isActive, setIsCollapse }) {
 	if (!isActive) return null;
 	const finallyClassName = calcClassName(css, {
 		baseClassName: "mainNav",
@@ -16,6 +16,7 @@ export default function MainNav({ className, isActive }) {
 				<NavLink
 					key={id}
 					to={route}
+					onClick={() => setIsCollapse(false)}
 					className={({ isActive }) =>
 						isActiveNavLink({
 							isActive,

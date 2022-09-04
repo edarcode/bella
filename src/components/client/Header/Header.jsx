@@ -15,7 +15,11 @@ export default function Header() {
 				className={css.iconMenu}
 			/>
 			<Logo className={css.logo} />
-			<MainNav className={css.mainNav} isActive={isActiveMainNav} />
+			<MainNav
+				className={css.mainNav}
+				isActive={isActiveMainNav}
+				setIsCollapse={setIsActiveMainNav}
+			/>
 		</header>
 	);
 }

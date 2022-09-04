@@ -4,7 +4,8 @@
 	gap: var(--gap-sm);
 	flex-direction: column;
 	padding: var(--padding-md);
-	background-color: var(--color-white);
+	background-color: var(--color-gray-hard);
+	color: var(--color-white);
 }
 .link {
 	margin-right: auto;
