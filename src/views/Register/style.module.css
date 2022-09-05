@@ -1,0 +1,14 @@
+.register {
+	height: 100%;
+	display: grid;
+	place-items: center;
+}
+.form {
+	display: grid;
+	gap: var(--gap-md);
+	max-width: 500px;
+}
+.forgetPass {
+	color: var(--color-blue);
+	justify-self: end;
+}
