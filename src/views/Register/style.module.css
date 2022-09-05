@@ -4,6 +4,7 @@
 	place-items: center;
 }
 .form {
+	position: relative;
 	display: grid;
 	gap: var(--gap-md);
 	max-width: 500px;
@@ -11,4 +12,14 @@
 .forgetPass {
 	color: var(--color-blue);
 	justify-self: end;
+}
+.spinner {
+	position: absolute;
+	top: calc(50% - 20px);
+	left: calc(50% - 20px);
+}
+.err {
+	color: var(--color-red);
+	padding: 0 var(--padding-md);
+	text-align: center;
 }

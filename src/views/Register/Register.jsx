@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import Button from "../../components/buttons/Button/Button.jsx";
+import Spinner from "../../components/common/Spinner/Spinner.jsx";
 import InputEmail from "../../components/inputs/InputEmail/InputEmail.jsx";
 import InputPassword from "../../components/inputs/InputPassword/InputPassword.jsx";
 import {
@@ -19,6 +20,9 @@ export default function Register() {
 		initialRegister
 	);
 
+	const isValidateSubmit =
+		email.value && !email.err && password.value && !password.err;
+
 	const handleChangeEmail = e => {
 		const email = e.target.value;
 		dispatch({ type: SAVE_EMAIL, payload: email });
@@ -31,8 +35,6 @@ export default function Register() {
 
 	const handleSubmitRegister = async e => {
 		e.preventDefault();
-		const isValidateSubmit =
-			email.value && !email.err && password.value && !password.err;
 		if (!isValidateSubmit) return;
 
 		try {
@@ -50,10 +52,10 @@ export default function Register() {
 		}
 	};
 
-	if (loading) return <p>Procesando registro...</p>;
 	return (
 		<div className={css.register}>
 			<form className={css.form} onSubmit={handleSubmitRegister}>
+				{err && <p className={css.err}>{err} 😱</p>}
 				<InputEmail
 					placeholder="Email"
 					err={email.err}
@@ -69,8 +71,8 @@ export default function Register() {
 				<a href="" className={css.forgetPass}>
 					¿Olvidó su password?
 				</a>
-				<Button>Registrar</Button>
-				{err && <p>{err}</p>}
+				<Button disabled={!isValidateSubmit}>Registrar</Button>
+				<Spinner isVisible={loading} className={css.spinner} />
 			</form>
 		</div>
 	);

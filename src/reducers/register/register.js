@@ -1,3 +1,4 @@
+import { ERR } from "../../constants/msgs.js";
 import { validateEmail } from "../../utils/validations/validateEmail.js";
 import { validatePassword } from "../../utils/validations/validatePassword.js";
 import {
@@ -37,7 +38,7 @@ export const register = (register, { type, payload }) => {
 		case FETCH_ERR:
 			return {
 				...register,
-				err: payload,
+				err: payload || ERR,
 				loading: false,
 				success: ""
 			};

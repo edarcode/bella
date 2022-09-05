@@ -2,35 +2,27 @@
 	padding: var(--padding-md);
 	color: var(--color-gray);
 	display: grid;
-	justify-items: start;
+	justify-items: center;
 	gap: var(--gap-md);
 	font-size: 1.4rem;
 }
 .footer a {
 	border-bottom: 1px solid var(--color-gray-light);
 }
-.nav1,
-.wrapper {
+.navAbout,
+.wrapperCopyright {
 	display: grid;
 	gap: var(--gap-sm);
+	text-align: center;
 }
-.nav2 {
+.navPolitical {
 	display: grid;
 	grid-auto-flow: column;
 	gap: var(--gap-md);
-	justify-self: center;
-}
-
-.social {
-	justify-self: center;
 }
 
 @media screen and (min-width: 768px) {
 	.footer {
 		justify-items: center;
-	}
-	.nav1,
-	.wrapper {
-		text-align: center;
 	}
 }
