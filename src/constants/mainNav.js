@@ -1,6 +1,11 @@
-import { LOGIN, REGISTER } from "./clientRoutes.js";
+import { HOME, LOGIN, REGISTER } from "./clientRoutes.js";
 
 export const MAIN_NAV = [
+	{
+		id: crypto.randomUUID(),
+		text: "Inicio",
+		route: HOME
+	},
 	{
 		id: crypto.randomUUID(),
 		text: "Registro",

@@ -8,6 +8,7 @@ import {
 	SUPPLIERS,
 	USERS
 } from "../constants/controlPanelPaths.js";
+import { useGetProductsClient } from "../hooks/useGetProductsClient.js";
 import Bills from "../views/Bills/Bills.jsx";
 import Categories from "../views/Categories/Categories.jsx";
 import Client from "../views/Client/Client.jsx";
@@ -22,6 +23,7 @@ import Users from "../views/Users/Users.jsx";
 import css from "./style.module.css";
 
 export default function App() {
+	useGetProductsClient();
 	return (
 		<div className={css.app}>
 			<Routes>
