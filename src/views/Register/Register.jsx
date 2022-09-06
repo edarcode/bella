@@ -1,8 +1,10 @@
 import { useReducer } from "react";
+import { NavLink } from "react-router-dom";
 import Button from "../../components/buttons/Button/Button.jsx";
 import Spinner from "../../components/common/Spinner/Spinner.jsx";
 import InputEmail from "../../components/inputs/InputEmail/InputEmail.jsx";
 import InputPassword from "../../components/inputs/InputPassword/InputPassword.jsx";
+import { LOGIN } from "../../constants/clientRoutes.js";
 import {
 	FETCH_ERR,
 	FETCH_LOADING,
@@ -68,9 +70,9 @@ export default function Register() {
 					value={password.value}
 					onChange={handleChangePassword}
 				/>
-				<a href="" className={css.forgetPass}>
-					¿Olvidó su password?
-				</a>
+				<NavLink to={LOGIN} className={css.forgetPass}>
+					Ir a login
+				</NavLink>
 				<Button disabled={!isValidateSubmit}>Registrar</Button>
 				<Spinner isVisible={loading} className={css.spinner} />
 			</form>

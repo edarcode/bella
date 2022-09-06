@@ -3,5 +3,6 @@ import {
 	REGISTER as PATH_REGISTER
 } from "./clientPaths.js";
 
+export const HOME = "/";
 export const REGISTER = `/${PATH_REGISTER}`;
 export const LOGIN = `/${PATH_LOGIN}`;
