@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { MAIN_NAV } from "../../../constants/mainNav.js";
 import { calcClassName } from "../../../utils/calcClassName.js";
 import { isActiveNavLink } from "../../../utils/isActiveNavLink.js";
+import NavLinkControlPanel from "../NavLinkControlPanel/NavLinkControlPanel.jsx";
 import css from "./style.module.css";
 
 export default function MainNav({ className, isActive, setIsCollapse }) {
@@ -28,6 +29,7 @@ export default function MainNav({ className, isActive, setIsCollapse }) {
 					{text}
 				</NavLink>
 			))}
+			<NavLinkControlPanel onClick={() => setIsCollapse(false)} />
 		</nav>
 	);
 }

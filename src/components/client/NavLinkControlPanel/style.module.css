@@ -1,0 +1,6 @@
+.link {
+	margin-right: auto;
+}
+.activeLink {
+	border-bottom: 1px solid var(--color-gray);
+}

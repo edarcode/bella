@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import AuthControlPanel from "../components/auth/AuthControlPanel/AuthControlPanel.jsx";
 import { CLIENT, LOGIN, REGISTER } from "../constants/clientPaths.js";
 import { NOT_FOUND } from "../constants/commonPaths.js";
 import {
@@ -36,7 +37,14 @@ export default function App() {
 					<Route path={LOGIN} element={<Login />} />
 				</Route>
 				{/* ------------------ControlPanel------------------------------ */}
-				<Route path={CONTROL_PANEL} element={<ControlPanel />}>
+				<Route
+					path={CONTROL_PANEL}
+					element={
+						<AuthControlPanel>
+							<ControlPanel />
+						</AuthControlPanel>
+					}
+				>
 					<Route index element={<Products />} />
 					<Route path={USERS} element={<Users />} />
 					<Route path={BILLS} element={<Bills />} />

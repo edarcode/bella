@@ -1,16 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DEFAULT } from "../constants/default.js";
-import { changePage } from "../redux/slices-control-panel/data-products/dataProducts.js";
 import { getDataProducts } from "../redux/slices-control-panel/data-products/thunks/getDataProducts.js";
 
 let isFirstRender = true;
 
 export const useGetProducts = () => {
 	const dispatch = useDispatch();
-	const { products, pageCount, page, loading, err, filters } = useSelector(
-		({ dataProducts }) => dataProducts
-	);
+	const { page, filters } = useSelector(({ dataProducts }) => dataProducts);
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -36,10 +33,4 @@ export const useGetProducts = () => {
 	useEffect(() => {
 		isFirstRender = false;
 	}, []);
-
-	const updatePage = page => {
-		dispatch(changePage(page));
-	};
-
-	return { products, pageCount, page, loading, err, updatePage };
 };

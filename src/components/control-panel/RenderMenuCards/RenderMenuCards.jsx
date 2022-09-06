@@ -7,7 +7,7 @@ export default function RenderMenuCards({ isCollapseMenu, contractMenu }) {
 		<div className={css.menuCards}>
 			{MENU_CARDS.map(item => (
 				<MenuCard
-					key={item.icon}
+					key={item.id}
 					{...item}
 					visibleText={isCollapseMenu}
 					to={item.route}
