@@ -1,0 +1,2 @@
+el slice de login y user tienen cierta relación leve.
+Si todo sale bien cuando se hace login se guarda el token en el slice de user, es decir, login dispacha una acción de user

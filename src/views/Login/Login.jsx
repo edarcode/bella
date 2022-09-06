@@ -5,7 +5,6 @@ import Button from "../../components/buttons/Button/Button.jsx";
 import Spinner from "../../components/common/Spinner/Spinner.jsx";
 import InputEmail from "../../components/inputs/InputEmail/InputEmail.jsx";
 import InputPassword from "../../components/inputs/InputPassword/InputPassword.jsx";
-
 import { HOME, REGISTER } from "../../constants/clientRoutes.js";
 import {
 	saveEmail,
@@ -18,9 +17,8 @@ import css from "./style.module.css";
 export default function Login() {
 	const goHome = useNavigate();
 	const dispatch = useDispatch();
-	const { email, password, err, loading, token } = useSelector(
-		({ login }) => login
-	);
+	const { email, password, err, loading } = useSelector(({ login }) => login);
+	const { token } = useSelector(({ user }) => user);
 	const isValidSubmit = email && password && !validateEmail(email);
 
 	useEffect(() => {

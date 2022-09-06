@@ -9,6 +9,7 @@ import {
 	USERS
 } from "../constants/controlPanelPaths.js";
 import { useGetProductsClient } from "../hooks/useGetProductsClient.js";
+import { useVerifyToken } from "../hooks/useVerifyToken.js";
 import Bills from "../views/Bills/Bills.jsx";
 import Categories from "../views/Categories/Categories.jsx";
 import Client from "../views/Client/Client.jsx";
@@ -24,6 +25,7 @@ import css from "./style.module.css";
 
 export default function App() {
 	useGetProductsClient();
+	useVerifyToken();
 	return (
 		<div className={css.app}>
 			<Routes>

@@ -4,7 +4,6 @@ import { ERR } from "../../../constants/msgs.js";
 const initialState = {
 	email: "",
 	password: "",
-	token: "",
 	loading: false,
 	err: ""
 };
@@ -19,7 +18,7 @@ export const login = createSlice({
 		savePassword: (login, { payload }) => {
 			login.password = payload;
 		},
-		loadingToken: (login, { payload }) => {
+		loadingToken: login => {
 			login.loading = true;
 			login.err = "";
 		},
@@ -27,13 +26,11 @@ export const login = createSlice({
 			login.loading = false;
 			login.err = payload || ERR;
 		},
-		saveToken: (login, { payload }) => {
-			login.token = payload;
-			login.loading = false;
-			login.err = "";
+		clearLogin: () => {
+			return { ...initialState };
 		}
 	}
 });
 
-export const { saveEmail, savePassword, loadingToken, saveErr, saveToken } =
+export const { saveEmail, savePassword, loadingToken, saveErr, clearLogin } =
 	login.actions;
