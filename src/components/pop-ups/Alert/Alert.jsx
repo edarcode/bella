@@ -17,9 +17,9 @@ export default function Alert({
 
 	if (!isVisible) return null;
 	return (
-		<article {...props} className={finallyClassName}>
+		<dialog {...props} className={finallyClassName}>
 			<p className={css.text}>{text}</p>
 			<Button onClick={onClick}>{textBtn}</Button>
-		</article>
+		</dialog>
 	);
 }
