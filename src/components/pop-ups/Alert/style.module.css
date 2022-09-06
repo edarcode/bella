@@ -1,0 +1,13 @@
+.alert {
+	display: grid;
+	place-items: center;
+	gap: var(--gap-md);
+	box-shadow: var(--shadow-md);
+	border-radius: var(--radius-md);
+	padding: var(--padding-big);
+	background-color: var(--color-white);
+	min-width: 300px;
+}
+.text {
+	text-align: center;
+}

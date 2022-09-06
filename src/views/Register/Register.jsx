@@ -1,9 +1,10 @@
 import { useReducer } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/buttons/Button/Button.jsx";
 import Spinner from "../../components/common/Spinner/Spinner.jsx";
 import InputEmail from "../../components/inputs/InputEmail/InputEmail.jsx";
 import InputPassword from "../../components/inputs/InputPassword/InputPassword.jsx";
+import Alert from "../../components/pop-ups/Alert/Alert.jsx";
 import { LOGIN } from "../../constants/clientRoutes.js";
 import {
 	FETCH_ERR,
@@ -17,7 +18,8 @@ import { fetchRegister } from "../../utils/fetchs/fetchRegister.js";
 import css from "./style.module.css";
 
 export default function Register() {
-	const [{ email, password, loading, err }, dispatch] = useReducer(
+	const goHome = useNavigate();
+	const [{ email, password, loading, err, success }, dispatch] = useReducer(
 		register,
 		initialRegister
 	);
@@ -70,11 +72,18 @@ export default function Register() {
 					value={password.value}
 					onChange={handleChangePassword}
 				/>
-				<NavLink to={LOGIN} className={css.forgetPass}>
+				<Link to={LOGIN} className={css.forgetPass}>
 					Ir a login
-				</NavLink>
+				</Link>
 				<Button disabled={!isValidateSubmit}>Registrar</Button>
 				<Spinner isVisible={loading} className={css.spinner} />
+				<Alert
+					className={css.alert}
+					isVisible={success}
+					text={success}
+					textBtn="Ir a login"
+					onClick={() => goHome(LOGIN)}
+				/>
 			</form>
 		</div>
 	);

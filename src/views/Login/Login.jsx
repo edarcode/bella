@@ -21,7 +21,7 @@ export default function Login() {
 	const { email, password, err, loading, token } = useSelector(
 		({ login }) => login
 	);
-	const isValidSubmit = email && password && validateEmail(email) === "";
+	const isValidSubmit = email && password && !validateEmail(email);
 
 	useEffect(() => {
 		if (token) goHome(HOME);
@@ -31,6 +31,7 @@ export default function Login() {
 		const email = e.target.value;
 		dispatch(saveEmail(email));
 	};
+
 	const handleChangePassword = e => {
 		const password = e.target.value;
 		dispatch(savePassword(password));
