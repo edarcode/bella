@@ -1,9 +1,17 @@
 export default function OpenMenu(props) {
 	return (
-		<svg width="40px" height="40px" viewBox="0 0 24 24" {...props}>
+		<svg
+			{...props}
+			fill="none"
+			stroke="currentColor"
+			viewBox="0 0 24 24"
+			xmlns="http://www.w3.org/2000/svg"
+		>
 			<path
-				fill="currentColor"
-				d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm16 5H4v2h16v-2z"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth="2"
+				d="M4 6h16M4 12h16M4 18h16"
 			></path>
 		</svg>
 	);

@@ -19,7 +19,6 @@ export default function Aside({ className }) {
 				<IconCollapseMenu
 					isCollapse={isCollapseMenu}
 					setIsCollapse={setIsCollapseMenu}
-					className={isCollapseMenu && css.iconCollapseMenu}
 				/>
 				<RenderMenuCards
 					isCollapseMenu={isCollapseMenu}

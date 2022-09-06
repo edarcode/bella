@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { CONTROL_PANEL } from "../../../constants/controlPanelPaths.js";
+import { CONTROL_PANEL } from "../../../constants/controlPanelRoutes.js";
+
 import { ADMIN, MASTER } from "../../../constants/roles.js";
 import { isActiveNavLink } from "../../../utils/isActiveNavLink.js";
 import css from "./style.module.css";

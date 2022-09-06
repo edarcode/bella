@@ -1,5 +1,6 @@
 import Bill from "../components/icons/Bill.jsx";
 import Clothing from "../components/icons/Clothing.jsx";
+import Home from "../components/icons/Home.jsx";
 import Tags from "../components/icons/Tags.jsx";
 import Truck from "../components/icons/Truck.jsx";
 import Users from "../components/icons/Users.jsx";
@@ -45,7 +46,7 @@ export const MENU_CARDS = [
 	},
 	{
 		id: crypto.randomUUID(),
-		icon: Tags,
+		icon: Home,
 		text: "Inicio",
 		route: CLIENT
 	}
