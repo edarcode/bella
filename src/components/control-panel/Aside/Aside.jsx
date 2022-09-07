@@ -17,6 +17,7 @@ export default function Aside({ className }) {
 		<aside className={newClassName}>
 			<div className={css.wrapper}>
 				<IconCollapseMenu
+					className={css.iconMenu}
 					isCollapse={isCollapseMenu}
 					setIsCollapse={setIsCollapseMenu}
 				/>

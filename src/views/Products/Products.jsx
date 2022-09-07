@@ -26,7 +26,7 @@ export default function Products() {
 				className={css.paged}
 				pageCount={pageCount}
 				page={page}
-				updatePage={() => dispatch(changePage(page))}
+				updatePage={newPage => dispatch(changePage(newPage))}
 			/>
 		</div>
 	);

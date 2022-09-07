@@ -8,7 +8,6 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: var(--gap-big);
 	position: sticky;
 	top: var(--padding-sm);
@@ -19,7 +18,9 @@
 	bottom: 0;
 	z-index: 30;
 }
-
+.iconMenu {
+	margin-left: 6.5px;
+}
 .logo {
 	width: 60px;
 	height: 60px;
