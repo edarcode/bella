@@ -22,13 +22,11 @@ export default function WrapperFormProducts({ className }) {
 	});
 	return (
 		<div className={finallyClassName}>
-			<Button className={css.btn} type="button">
-				Crear producto
-			</Button>
 			<Button
 				className={css.btn}
 				type="button"
 				onClick={handleClickIsCollapseFilters}
+				isNull={isCollapseFilters}
 			>
 				Filtros
 			</Button>
