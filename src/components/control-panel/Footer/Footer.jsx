@@ -2,12 +2,13 @@ import { calcClassName } from "../../../utils/calcClassName.js";
 import css from "./style.module.css";
 
 export default function Footer({ className }) {
-	const newClassName = calcClassName(css, {
-		baseClassName: "footer",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "footer",
+		outer: className
 	});
 	return (
-		<footer className={newClassName}>
+		<footer className={finallyClassName}>
 			Colombia / Cuentas claras y el chocolate espeso 🥸
 		</footer>
 	);

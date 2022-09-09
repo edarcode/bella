@@ -8,10 +8,16 @@ export default function IconCollapseMenu({
 	setIsCollapse,
 	className
 }) {
-	const newClassName = calcClassName(css, { baseClassName: "icon", className });
+	const finallyClassName = calcClassName({
+		css,
+		local: "icon",
+		outer: className
+	});
 
 	const handleClickCollapse = () => setIsCollapse(!isCollapse);
 	if (!isCollapse)
-		return <OpenMenu className={newClassName} onClick={handleClickCollapse} />;
-	return <Close className={newClassName} onClick={handleClickCollapse} />;
+		return (
+			<OpenMenu className={finallyClassName} onClick={handleClickCollapse} />
+		);
+	return <Close className={finallyClassName} onClick={handleClickCollapse} />;
 }

@@ -10,9 +10,10 @@ export default function Alert({
 	onClick,
 	...props
 }) {
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "alert",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "alert",
+		outer: className
 	});
 
 	if (!isVisible) return null;

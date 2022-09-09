@@ -8,9 +8,10 @@ export default function Select({
 	onDirectionSort,
 	...props
 }) {
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "wrapper",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "wrapper",
+		outer: className
 	});
 	return (
 		<div

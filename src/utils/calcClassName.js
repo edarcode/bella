@@ -1,18 +1,16 @@
-export const calcClassName = (css, { baseClassName, className }) => {
-	let newClassName = "";
-	if (baseClassName) {
-		const splitBaseClassName = baseClassName.split(" ");
-		for (let i = 0; i < splitBaseClassName.length; i++) {
-			const element = splitBaseClassName[i];
-			newClassName
-				? (newClassName += (css[element] && ` ${css[element]}`) || "")
-				: (newClassName += (css[element] && css[element]) || "");
-		}
+export const calcClassName = ({ css, local, outer }) => {
+	if (!css) throw TypeError("Require the module css");
+	const invalidClassName = ["undefained", "null"];
+	const allClassName = [];
+	if (local) {
+		local
+			.split(" ")
+			.filter(
+				className => !invalidClassName.includes(className) && css[className]
+			)
+			.map(className => allClassName.push(css[className]));
 	}
-	if (className)
-		newClassName
-			? (newClassName += ` ${className}`)
-			: (newClassName = className);
+	if (outer && !invalidClassName.includes(outer)) allClassName.push(outer);
 
-	return newClassName;
+	return allClassName.join(" ");
 };

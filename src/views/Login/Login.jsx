@@ -52,7 +52,7 @@ export default function Login() {
 					onChange={handleChangePassword}
 				/>
 				<div className={css.wrapperForgetPass}>
-					<a href="">¿Olvidó su password?</a>
+					<a href="#">¿Olvidó su password?</a>
 					<Link to={REGISTER}>Ir a registro</Link>
 				</div>
 				<Button disabled={!isValidSubmit}>Login</Button>

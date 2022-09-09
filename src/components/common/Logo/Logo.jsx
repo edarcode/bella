@@ -2,9 +2,10 @@ import { calcClassName } from "../../../utils/calcClassName.js";
 import css from "./style.module.css";
 
 export default function Logo({ className, color, ...props }) {
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "logo",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "logo",
+		outer: className
 	});
 	return (
 		<img

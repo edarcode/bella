@@ -2,9 +2,10 @@ import { calcClassName } from "../../../utils/calcClassName.js";
 import css from "./style.module.css";
 
 export default function InputText({ err, className, ...props }) {
-	const finallyClassNameLabel = calcClassName(css, {
-		baseClassName: "label",
-		className
+	const finallyClassNameLabel = calcClassName({
+		css,
+		local: "label",
+		outer: className
 	});
 	const finallyClassNameInput = calcClassName(css, {
 		baseClassName: "input",

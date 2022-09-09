@@ -7,9 +7,10 @@ import css from "./style.module.css";
 
 export default function MainNav({ className, isActive, setIsCollapse }) {
 	if (!isActive) return null;
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "mainNav",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "mainNav",
+		outer: className
 	});
 	return (
 		<nav className={finallyClassName}>

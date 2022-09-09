@@ -16,9 +16,10 @@ export default function WrapperFormProducts({ className }) {
 		else setIsCollapseFilters(false);
 	}, [widthWindow]);
 
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "wrapper",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "wrapper",
+		outer: className
 	});
 	return (
 		<div className={finallyClassName}>

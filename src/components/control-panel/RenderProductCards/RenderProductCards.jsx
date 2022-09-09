@@ -12,9 +12,10 @@ export default function RenderProductCards({
 	if (loading) return <p>Cargando...</p>;
 	if (err) return <p>Error al cargar productos 😰</p>;
 	if (!products || !products.length) return <p>No hay productos</p>;
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "wrapperProducts",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "wrapperProducts",
+		outer: className
 	});
 	return (
 		<div className={finallyClassName}>

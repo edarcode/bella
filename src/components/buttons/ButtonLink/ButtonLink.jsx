@@ -4,9 +4,10 @@ import Arrow from "../../icons/Arrow.jsx";
 import css from "./style.module.css";
 
 export default function ButtonLink({ className, children, ...props }) {
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "span",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "span",
+		outer: className
 	});
 
 	return (

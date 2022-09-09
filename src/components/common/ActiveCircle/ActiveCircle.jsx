@@ -4,9 +4,10 @@ import css from "./style.module.css";
 export default function ActiveCircle({ isAvtive, className }) {
 	if (isAvtive === undefined) return null;
 
-	const finallyClassName = calcClassName(css, {
-		baseClassName: "circle",
-		className
+	const finallyClassName = calcClassName({
+		css,
+		local: "circle",
+		outer: className
 	});
 
 	return (

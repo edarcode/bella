@@ -5,13 +5,15 @@ import css from "./style.module.css";
 
 export default function InputPassword({ err, className, ...props }) {
 	const [isVisiblePass, setIsVisiblePass] = useState(true);
-	const finallyClassNameLabel = calcClassName(css, {
-		baseClassName: "label",
-		className
+	const finallyClassNameLabel = calcClassName({
+		css,
+		local: "label",
+		outer: className
 	});
-	const finallyClassNameInput = calcClassName(css, {
-		baseClassName: "input",
-		className: err ? css.inputErr : null
+	const finallyClassNameInput = calcClassName({
+		css,
+		local: "input",
+		outer: err ? css.inputErr : null
 	});
 
 	return (
