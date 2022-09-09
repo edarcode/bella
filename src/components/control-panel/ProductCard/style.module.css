@@ -1,9 +1,9 @@
 .card {
 	position: relative;
 	display: grid;
-	gap: var(--gap-md);
+	gap: var(--gap-sm);
 	grid-auto-flow: column;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: auto 1fr auto auto;
 	font-size: 1.4rem;
 	justify-items: start;
 	align-items: center;
@@ -12,6 +12,17 @@
 	box-shadow: var(--shadow-sm);
 	background-color: var(--color-white);
 	min-height: 75px;
+}
+.edit {
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+}
+.activeCircle {
+	position: absolute;
+	bottom: var(--padding-sm);
+	left: var(--padding-sm);
 }
 .wrapper1 {
 	display: grid;

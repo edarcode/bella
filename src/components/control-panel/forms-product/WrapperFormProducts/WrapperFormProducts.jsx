@@ -26,7 +26,7 @@ export default function WrapperFormProducts({ className }) {
 				className={css.btn}
 				type="button"
 				onClick={handleClickIsCollapseFilters}
-				isNull={isCollapseFilters}
+				isVisible={isCollapseFilters}
 			>
 				Filtros
 			</Button>

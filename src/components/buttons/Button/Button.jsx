@@ -5,10 +5,10 @@ export default function Button({
 	disabled,
 	className,
 	kind,
-	isNull,
+	isVisible,
 	...props
 }) {
-	if (isNull) return null;
+	if (isVisible) return null;
 	return (
 		<button
 			{...props}
