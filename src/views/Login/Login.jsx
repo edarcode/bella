@@ -1,11 +1,11 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../components/buttons/Button/Button.jsx";
 import Spinner from "../../components/common/Spinner/Spinner.jsx";
 import InputEmail from "../../components/inputs/InputEmail/InputEmail.jsx";
 import InputPassword from "../../components/inputs/InputPassword/InputPassword.jsx";
-import { HOME, REGISTER } from "../../constants/clientRoutes.js";
+import { REGISTER } from "../../constants/clientRoutes.js";
+import { useNavigateViews } from "../../hooks/useNavigateViews.js";
 import {
 	saveEmail,
 	savePassword
@@ -15,15 +15,11 @@ import { validateEmail } from "../../utils/validations/validateEmail.js";
 import css from "./style.module.css";
 
 export default function Login() {
-	const goHome = useNavigate();
+	useNavigateViews();
 	const dispatch = useDispatch();
 	const { email, password, err, loading } = useSelector(({ login }) => login);
-	const { token } = useSelector(({ user }) => user);
-	const isValidSubmit = email && password && !validateEmail(email);
 
-	useEffect(() => {
-		if (token) goHome(HOME);
-	}, [token, goHome]);
+	const isValidSubmit = email && password && !validateEmail(email);
 
 	const handleChangeEmail = e => {
 		const email = e.target.value;
