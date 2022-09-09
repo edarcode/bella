@@ -6,6 +6,7 @@ import {
 	BILLS,
 	CATEGORIES,
 	CONTROL_PANEL,
+	CREATE_PRODUCT,
 	EDIT_PRODUCT,
 	SUPPLIERS,
 	USERS
@@ -16,6 +17,7 @@ import Bills from "../views/Bills/Bills.jsx";
 import Categories from "../views/Categories/Categories.jsx";
 import Client from "../views/Client/Client.jsx";
 import ControlPanel from "../views/ControlPanel/ControlPanel.jsx";
+import CreateProduct from "../views/CreateProduct/CreateProduct.jsx";
 import EditProduct from "../views/EditProduct/EditProduct.jsx";
 import Home from "../views/Home/Home.jsx";
 import Login from "../views/Login/Login.jsx";
@@ -49,6 +51,7 @@ export default function App() {
 				>
 					<Route index element={<Products />} />
 					<Route path={`${EDIT_PRODUCT}:id`} element={<EditProduct />} />
+					<Route path={CREATE_PRODUCT} element={<CreateProduct />} />
 					<Route path={USERS} element={<Users />} />
 					<Route path={BILLS} element={<Bills />} />
 					<Route path={SUPPLIERS} element={<Suppliers />} />

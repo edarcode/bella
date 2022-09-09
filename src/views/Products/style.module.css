@@ -1,15 +1,21 @@
 .products {
+	position: relative;
 	display: grid;
 	place-items: center;
 	grid-template-rows: auto auto 1fr auto;
 	grid-template-areas:
-		"search"
 		"filters"
+		"search"
 		"products"
 		"paged";
 	gap: var(--gap-md);
 	min-height: 100%;
-	padding: var(--padding-md) var(--padding-sm);
+	padding: var(--padding-large) var(--padding-sm) var(--padding-md);
+}
+.createProduct {
+	position: absolute;
+	top: 15px;
+	right: 8px;
 }
 .search {
 	grid-area: search;
