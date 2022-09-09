@@ -4,8 +4,9 @@ import { calcFinalClassName } from "./utils/calcFinalClassName.js";
 
 export default function InputCheckbox({ className, text, ...props }) {
 	const finallyClassName = calcFinalClassName({
-		localClass: css.label,
-		outerClass: className
+		css,
+		local: "label",
+		outer: className
 	});
 
 	return (
