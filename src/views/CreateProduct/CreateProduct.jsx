@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import Button from "../../components/buttons/Button/Button.jsx";
-import SelectMultipleOptions from "../../components/common/SelectMultiple/SelectMultiple.jsx";
+import SelectMultiple from "../../components/common/SelectMultiple/SelectMultiple.jsx";
 
 import InputFile from "../../components/inputs/InputFile/InputFile.jsx";
 import InputNumber from "../../components/inputs/InputNumber/InputNumber.jsx";
@@ -20,7 +20,7 @@ export default function CreateProduct() {
 				<InputNumber placeholder="Precio de venta" min={0} />
 				<Textarea placeholder="Descripción" />
 				<InputFile />
-				<SelectMultipleOptions about="Categorías" dataChecks={allCategories} />
+				<SelectMultiple about="Categorías" dataChecks={allCategories} />
 				<Button>Crear producto</Button>
 			</form>
 		</div>

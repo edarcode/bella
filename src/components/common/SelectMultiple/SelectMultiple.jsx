@@ -1,13 +1,22 @@
 import { useState } from "react";
+import { calcClassName } from "../../../utils/calcClassName.js";
 import css from "./style.module.css";
 import Arrow from "./svgs/Arrow.jsx";
 import WrapperAllChecks from "./WrapperAllChecks.jsx";
 
-export default function SelectMultipleOptions({ about, dataChecks }) {
+export default function SelectMultipleOptions({
+	about,
+	dataChecks,
+	className
+}) {
 	const [isCollapse, setIsCollapse] = useState(false);
-
+	const finallyClassName = calcClassName({
+		css,
+		local: "select",
+		outer: className
+	});
 	return (
-		<div className={css.select}>
+		<div className={finallyClassName}>
 			<button
 				type="button"
 				className={css.btn}
