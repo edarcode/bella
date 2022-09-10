@@ -6,7 +6,7 @@ export default function WrapperAllChecks({ dataChecks, isCollapse }) {
 		<div className={css.wrapperAllChecks}>
 			{dataChecks.map(({ id, name }) => (
 				<label key={id} className={css.wrapperCheck}>
-					<input type="checkbox" />
+					<input type="checkbox" value={id} />
 					<span>{name}</span>
 				</label>
 			))}

@@ -1,9 +1,14 @@
 .select {
+	position: relative;
 	display: grid;
 	gap: var(--gap-sm);
 	justify-items: start;
 }
 .btn {
+	display: grid;
+	place-items: center;
+	grid-template-columns: 1fr auto;
+	width: 100%;
 	cursor: pointer;
 	line-height: 24px;
 	min-height: 40px;
@@ -18,14 +23,24 @@
 	box-shadow: var(--shadow-big);
 	outline: transparent;
 }
+.arrow {
+	width: 20px;
+	height: 20px;
+	transition: transform 0.3s;
+}
 
 .wrapperAllChecks {
+	position: absolute;
+	bottom: 120%;
+	right: 0;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	font-size: var(--font-size-9);
 	box-shadow: var(--shadow-md);
 	padding: var(--padding-md);
 	border-radius: var(--radius-sm);
+	background-color: var(--color-white);
+	width: 100%;
 }
 .wrapperCheck {
 	display: flex;
