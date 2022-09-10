@@ -1,0 +1,26 @@
+.label {
+	display: grid;
+	place-items: center;
+	grid-template-columns: 1fr auto;
+	cursor: pointer;
+	line-height: 24px;
+	min-height: 40px;
+	padding: 8px 16px;
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow-sm);
+}
+.label:focus {
+	box-shadow: var(--shadow-big);
+	outline: transparent;
+}
+.inputFile {
+	display: none;
+}
+
+.upload {
+	width: 20px;
+	height: 20px;
+}

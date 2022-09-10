@@ -9,6 +9,7 @@
 	border: none;
 	outline: transparent;
 	width: 100%;
+	appearance: none;
 }
 .input::placeholder {
 	line-height: 24px;
