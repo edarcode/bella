@@ -1,0 +1,10 @@
+.createProduct {
+	min-height: 100%;
+	display: grid;
+	place-items: center;
+	padding: var(--padding-md);
+}
+.form {
+	display: grid;
+	gap: var(--gap-md);
+}

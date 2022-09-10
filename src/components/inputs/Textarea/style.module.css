@@ -1,0 +1,27 @@
+.label {
+	display: grid;
+}
+.textarea {
+	background-color: var(--color-white);
+	padding: var(--padding-sm) var(--padding-md);
+	box-shadow: var(--shadow-sm);
+	border-radius: var(--radius-sm);
+	border: none;
+	outline: transparent;
+	width: 100%;
+	resize: none;
+}
+.textarea::placeholder {
+	line-height: 24px;
+	color: var(--color-gray-light);
+}
+.textareaErr {
+	outline: 1px solid var(--color-red);
+}
+.textarea:focus {
+	box-shadow: var(--shadow-md);
+}
+.err {
+	color: var(--color-red);
+	padding: 0 var(--padding-md);
+}

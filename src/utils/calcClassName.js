@@ -1,6 +1,6 @@
 export const calcClassName = ({ css, local, outer }) => {
 	if (!css) throw TypeError("Require the module css");
-	const invalidClassName = ["undefained", "null"];
+	const invalidClassName = ["undefined", "null"];
 	const allClassName = [];
 	if (local) {
 		local

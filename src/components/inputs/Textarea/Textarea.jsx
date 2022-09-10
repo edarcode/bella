@@ -1,7 +1,7 @@
 import { calcClassName } from "../../../utils/calcClassName.js";
 import css from "./style.module.css";
 
-export default function InputText({ err, className, ...props }) {
+export default function Textarea({ err, className, ...props }) {
 	const finallyClassNameLabel = calcClassName({
 		css,
 		local: "label",
@@ -9,12 +9,12 @@ export default function InputText({ err, className, ...props }) {
 	});
 	const finallyClassNameInput = calcClassName({
 		css,
-		local: "input",
-		outer: err ? css.inputErr : null
+		local: "textarea",
+		outer: err ? css.textareaErr : null
 	});
 	return (
 		<label className={finallyClassNameLabel}>
-			<input {...props} className={finallyClassNameInput} type="text" />
+			<textarea {...props} className={finallyClassNameInput} />
 			{err && <span className={css.err}>{err}</span>}
 		</label>
 	);

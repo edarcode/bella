@@ -1,7 +1,7 @@
 import { calcClassName } from "../../../utils/calcClassName.js";
 import css from "./style.module.css";
 
-export default function InputText({ err, className, ...props }) {
+export default function InputNumber({ err, className, ...props }) {
 	const finallyClassNameLabel = calcClassName({
 		css,
 		local: "label",
@@ -14,7 +14,7 @@ export default function InputText({ err, className, ...props }) {
 	});
 	return (
 		<label className={finallyClassNameLabel}>
-			<input {...props} className={finallyClassNameInput} type="text" />
+			<input {...props} className={finallyClassNameInput} type="number" />
 			{err && <span className={css.err}>{err}</span>}
 		</label>
 	);
