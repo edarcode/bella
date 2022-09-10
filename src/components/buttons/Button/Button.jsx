@@ -1,4 +1,5 @@
 import { KIND_BUTTON } from "../../../constants/kindButton.js";
+import { calcClassName } from "../../../utils/calcClassName.js";
 import css from "./style.module.css";
 
 export default function Button({
@@ -9,13 +10,12 @@ export default function Button({
 	...props
 }) {
 	if (isVisible) return null;
-	return (
-		<button
-			{...props}
-			disabled={disabled}
-			className={`${css.btn} ${className} ${
-				css[!disabled ? kind : KIND_BUTTON.gray]
-			}`}
-		/>
-	);
+	const cssModifier = disabled ? KIND_BUTTON.gray : kind;
+	const finallyClassName = calcClassName({
+		css,
+		local: `btn ${cssModifier}`,
+		outer: className
+	});
+
+	return <button {...props} disabled={disabled} className={finallyClassName} />;
 }
