@@ -4,7 +4,14 @@ import css from "./style.module.css";
 import Arrow from "./svgs/Arrow.jsx";
 import WrapperAllChecks from "./WrapperAllChecks.jsx";
 
-export default function SelectMultiple({ about, dataChecks, className }) {
+export default function SelectMultiplePaged({
+	about,
+	dataChecks,
+	className,
+	page,
+	pageCount,
+	onPage
+}) {
 	const [isCollapse, setIsCollapse] = useState(false);
 	const finallyClassName = calcClassName({
 		css,
@@ -24,7 +31,13 @@ export default function SelectMultiple({ about, dataChecks, className }) {
 					style={isCollapse ? { transform: "rotate(-90deg)" } : {}}
 				/>
 			</button>
-			<WrapperAllChecks dataChecks={dataChecks} isCollapse={isCollapse} />
+			<WrapperAllChecks
+				page={page}
+				pageCount={pageCount}
+				onPage={onPage}
+				dataChecks={dataChecks}
+				isCollapse={isCollapse}
+			/>
 		</div>
 	);
 }

@@ -38,14 +38,40 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	font-size: var(--font-size-9);
 	box-shadow: var(--shadow-md);
-	padding: var(--padding-md);
+	padding: var(--padding-md) var(--padding-big);
 	border-radius: var(--radius-sm);
 	background-color: var(--color-white);
 	width: 100%;
 }
 .wrapperCheck {
 	display: flex;
-	align-items: center;
 	gap: var(--gap-sm);
 	cursor: pointer;
+}
+
+.btnChecksLeft,
+.btnChecksRight {
+	position: absolute;
+	top: 50%;
+	width: 20px;
+	height: 20px;
+	transform: translateY(-50%);
+	cursor: pointer;
+	padding: 0;
+	border: none;
+}
+.btnChecksLeft:disabled,
+.btnChecksRight:disabled {
+	color: var(--color-gray-light);
+}
+
+.btnChecksLeft {
+	scale: -1 1;
+}
+.btnChecksRight {
+	right: 0;
+}
+.arrowLeft,
+.arrowRight {
+	max-height: 100%;
 }

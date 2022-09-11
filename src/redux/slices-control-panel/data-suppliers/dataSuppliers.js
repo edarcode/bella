@@ -44,7 +44,8 @@ export const dataSuppliers = createSlice({
 			dataSuppliers.pageCount = 0;
 		},
 		savePage: (dataSuppliers, { payload }) => {
-			dataSuppliers.page = payload;
+			if (payload >= 0 && payload < dataSuppliers.pageCount)
+				dataSuppliers.page = payload;
 		},
 		saveName: (dataSuppliers, { payload }) => {
 			dataSuppliers.filters.name = payload;
