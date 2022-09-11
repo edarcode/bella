@@ -13,9 +13,9 @@ export default function CreateProduct() {
 	return (
 		<div className={css.createProduct}>
 			<form className={css.form} onSubmit={e => e.preventDefault()}>
-				<InputNumber placeholder="Stock" min={0} />
 				<InputText placeholder="Título" />
 				<InputText placeholder="Sub título" />
+				<InputNumber placeholder="Stock" min={0} />
 				<InputNumber placeholder="Precio de compra" min={0} />
 				<InputNumber placeholder="Precio de venta" min={0} />
 				<Textarea placeholder="Descripción" />

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { dataProductsClient } from "./slices-client/data-products/dataProductsClient.js";
 import { dataProducts } from "./slices-control-panel/data-products/dataProducts.js";
+import { dataSuppliers } from "./slices-control-panel/data-suppliers/dataSuppliers.js";
 import { detailProduct } from "./slices-control-panel/detail-product/detailProduct.js";
 import { categories } from "./slices-globals/categories/categories.js";
 import { login } from "./slices-globals/login/login.js";
@@ -13,6 +14,7 @@ export const store = configureStore({
 		[dataProducts.name]: dataProducts.reducer,
 		[login.name]: login.reducer,
 		[user.name]: user.reducer,
-		[detailProduct.name]: detailProduct.reducer
+		[detailProduct.name]: detailProduct.reducer,
+		[dataSuppliers.name]: dataSuppliers.reducer
 	}
 });
