@@ -3,11 +3,13 @@ import Aside from "../../components/control-panel/Aside/Aside.jsx";
 import Footer from "../../components/control-panel/Footer/Footer.jsx";
 import { useGetCategories } from "../../hooks/useGetCategories.js";
 import { useGetProducts } from "../../hooks/useGetProducts.js";
+import { useGetSuppliers } from "../../hooks/useGetSuppliers.js";
 import css from "./style.module.css";
 
 export default function ControlPanel() {
 	useGetProducts();
 	useGetCategories();
+	useGetSuppliers();
 	return (
 		<div className={css.control}>
 			<Aside className={css.aside} />
