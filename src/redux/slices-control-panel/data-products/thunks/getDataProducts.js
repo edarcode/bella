@@ -5,11 +5,11 @@ import {
 	setDataProducts
 } from "../dataProducts.js";
 
-export const getDataProducts = (signal, filters, isFirstRender) => {
+export const getDataProducts = (signal, filters, { token, isFirstRender }) => {
 	return async dispatch => {
 		try {
 			isFirstRender && dispatch(loadingDataProducts());
-			const { data } = await fetchDataProducts(signal, filters);
+			const { data } = await fetchDataProducts(signal, filters, { token });
 			dispatch(setDataProducts(data));
 		} catch (error) {
 			const {

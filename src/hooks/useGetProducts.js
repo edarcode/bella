@@ -8,6 +8,7 @@ let isFirstRender = true;
 export const useGetProducts = () => {
 	const dispatch = useDispatch();
 	const { page, filters } = useSelector(({ dataProducts }) => dataProducts);
+	const { token } = useSelector(({ user }) => user);
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -23,12 +24,12 @@ export const useGetProducts = () => {
 					active: !isActiveDefault ? filters.active : null,
 					categoryId: !isCategoryIdDefault ? filters.categoryId : null
 				},
-				isFirstRender
+				{ token, isFirstRender }
 			)
 		);
 
 		return () => controller.abort();
-	}, [dispatch, filters, page]);
+	}, [dispatch, filters, page, token]);
 
 	useEffect(() => {
 		isFirstRender = false;

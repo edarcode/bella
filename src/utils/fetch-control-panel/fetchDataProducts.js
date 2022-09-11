@@ -1,11 +1,12 @@
 import { DATA_PRODUCTS } from "../../constants/endPointsApi.js";
 import { axios } from "../axios.js";
 
-export const fetchDataProducts = async (signal, querys) => {
+export const fetchDataProducts = async (signal, querys, { token }) => {
 	const url = addQueryToUrl(DATA_PRODUCTS, querys);
 	const res = await axios({
 		method: "GET",
 		url,
+		headers: { token },
 		signal
 	});
 
