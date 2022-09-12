@@ -8,6 +8,7 @@ import InputText from "../../components/inputs/InputText/InputText.jsx";
 import Textarea from "../../components/inputs/Textarea/Textarea.jsx";
 import { useCreateProduct } from "../../hooks/useCreateProduct.js";
 import { savePage } from "../../redux/slices-control-panel/data-suppliers/dataSuppliers.js";
+import { uploadImagesCloudinary } from "../../utils/uploadImagesCloudinary.js";
 import css from "./style.module.css";
 
 export default function CreateProduct() {
@@ -30,6 +31,11 @@ export default function CreateProduct() {
 	const handleChangeSalePrice = e => {
 		const salePrice = e.target.value;
 		saveSalePrice(salePrice);
+	};
+	const handleChangeImages = async e => {
+		const fileImages = e.target.files;
+		const images = await uploadImagesCloudinary(fileImages);
+		console.log(images);
 	};
 
 	return (
@@ -56,7 +62,7 @@ export default function CreateProduct() {
 					onChange={handleChangeSalePrice}
 				/>
 				<Textarea placeholder="Descripción" name="description" />
-				<InputFile />
+				<InputFile multiple onChange={handleChangeImages} />
 				<SelectMultiple about="Categorías" dataChecks={allCategories} />
 				<SelectMultiplePaged
 					about="Proveedores"
