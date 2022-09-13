@@ -2,14 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/buttons/Button/Button.jsx";
 import SelectMultiple from "../../components/common/SelectMultiple/SelectMultiple.jsx";
 import SelectMultiplePaged from "../../components/common/SelectMultiplePaged/SelectMultiplePaged.jsx";
-import InputFile from "../../components/inputs/InputFile/InputFile.jsx";
+import InputImages from "../../components/inputs/InputImages/InputImages.jsx";
 import InputNumber from "../../components/inputs/InputNumber/InputNumber.jsx";
 import InputText from "../../components/inputs/InputText/InputText.jsx";
 import Textarea from "../../components/inputs/Textarea/Textarea.jsx";
 import { useCreateProduct } from "../../hooks/useCreateProduct.js";
 import { savePage } from "../../redux/slices-control-panel/data-suppliers/dataSuppliers.js";
 import { fetchCreateProduct } from "../../utils/fetch-control-panel/fetchCreateProduct.js";
-import { uploadImagesCloudinary } from "../../utils/uploadImagesCloudinary.js";
 import { getHandles } from "./handles/getHandles.js";
 import css from "./style.module.css";
 
@@ -30,6 +29,7 @@ export default function CreateProduct() {
 		buyPrice,
 		salePrice,
 		description,
+		images,
 		categories,
 		suppliers,
 		...saveMethods
@@ -39,10 +39,7 @@ export default function CreateProduct() {
 	const handleSubmitCreateProduct = async e => {
 		e.preventDefault();
 		if (!isValidateDataFormCreateProduct) return;
-		const fileImages = e.target.images.files;
 		try {
-			const images = await uploadImagesCloudinary(fileImages);
-			if (!images.length) return null;
 			const res = await fetchCreateProduct(
 				null,
 				{
@@ -53,7 +50,7 @@ export default function CreateProduct() {
 					salePrice: salePrice.value,
 					description: description.value,
 					categories,
-					images,
+					images: images.value,
 					suppliers
 				},
 				{ token }
@@ -103,10 +100,12 @@ export default function CreateProduct() {
 					value={description.value}
 					onChange={handles.handleChangeDescription}
 				/>
-				<InputFile
-					name="images"
+				<InputImages
 					multiple
 					onChange={handles.handleChangeImages}
+					loading={images.loading}
+					err={images.err}
+					success={images.success}
 				/>
 				<SelectMultiple
 					about="Categorías"

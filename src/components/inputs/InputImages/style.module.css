@@ -1,0 +1,39 @@
+.label {
+	position: relative;
+	display: grid;
+	place-items: center;
+	grid-template-columns: 1fr auto;
+	cursor: pointer;
+	line-height: 24px;
+	min-height: 40px;
+	padding: 8px 16px;
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	border-radius: var(--radius-sm);
+	border: 1px solid transparent;
+}
+
+.inputFile {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.err,
+.loading,
+.success {
+	width: 20px;
+	height: 20px;
+}
+.err {
+	color: var(--color-red);
+}
+.loading {
+	color: var(--color-gray);
+}
+.success {
+	color: var(--color-green);
+}

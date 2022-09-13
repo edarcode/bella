@@ -1,7 +1,11 @@
+import { ERR } from "../../constants/msgs.js";
 import {
+	ERR_IMAGES,
+	LOADING_IMAGES,
 	SAVE_BUY_PRICE,
 	SAVE_CATEGORIES,
 	SAVE_DESCRIPTION,
+	SAVE_IMAGES,
 	SAVE_NAME,
 	SAVE_SALE_PRICE,
 	SAVE_STOCK,
@@ -16,7 +20,7 @@ export const initialCreateProduct = {
 	buyPrice: { value: "", err: "" },
 	salePrice: { value: "", err: "" },
 	description: { value: "", err: "" },
-	images: [],
+	images: { value: [], err: "", loading: false, success: false },
 	categories: [],
 	suppliers: [],
 	err: "",
@@ -55,6 +59,26 @@ export const createProduct = (createProduct, { type, payload }) => {
 			return {
 				...createProduct,
 				description: { value: payload, err: "" }
+			};
+		case SAVE_IMAGES:
+			return {
+				...createProduct,
+				images: { value: payload, err: "", loading: false, success: true }
+			};
+		case LOADING_IMAGES:
+			return {
+				...createProduct,
+				images: { value: [], err: "", loading: true, success: false }
+			};
+		case ERR_IMAGES:
+			return {
+				...createProduct,
+				images: {
+					value: [],
+					err: payload || ERR,
+					loading: false,
+					success: false
+				}
 			};
 		case SAVE_CATEGORIES: {
 			const setCategories = new Set(createProduct.categories);

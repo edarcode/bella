@@ -1,8 +1,11 @@
 import { useReducer } from "react";
 import {
+	ERR_IMAGES,
+	LOADING_IMAGES,
 	SAVE_BUY_PRICE,
 	SAVE_CATEGORIES,
 	SAVE_DESCRIPTION,
+	SAVE_IMAGES,
 	SAVE_NAME,
 	SAVE_SALE_PRICE,
 	SAVE_STOCK,
@@ -13,6 +16,7 @@ import {
 	createProduct,
 	initialCreateProduct
 } from "../reducers/createProduct/createProduct.js";
+import { uploadImagesCloudinary } from "../utils/uploadImagesCloudinary.js";
 
 export const useCreateProduct = () => {
 	const [dataFormCreateProduct, dispatch] = useReducer(
@@ -38,6 +42,15 @@ export const useCreateProduct = () => {
 	const saveDescription = description => {
 		dispatch({ type: SAVE_DESCRIPTION, payload: description });
 	};
+	const saveImages = async fileImages => {
+		try {
+			dispatch({ type: LOADING_IMAGES });
+			const images = await uploadImagesCloudinary(fileImages);
+			dispatch({ type: SAVE_IMAGES, payload: images });
+		} catch (error) {
+			dispatch({ type: ERR_IMAGES });
+		}
+	};
 	const saveCategories = categoryId => {
 		dispatch({ type: SAVE_CATEGORIES, payload: categoryId });
 	};
@@ -51,6 +64,7 @@ export const useCreateProduct = () => {
 		buyPrice,
 		salePrice,
 		description,
+		images,
 		categories,
 		suppliers
 	} = dataFormCreateProduct;
@@ -70,7 +84,9 @@ export const useCreateProduct = () => {
 		categories &&
 		categories.length &&
 		suppliers &&
-		suppliers.length;
+		suppliers.length &&
+		images.value &&
+		images.value.length;
 
 	return {
 		...dataFormCreateProduct,
@@ -80,6 +96,7 @@ export const useCreateProduct = () => {
 		saveBuyPrice,
 		saveSalePrice,
 		saveDescription,
+		saveImages,
 		saveCategories,
 		saveSuppliers,
 		isValidateDataFormCreateProduct

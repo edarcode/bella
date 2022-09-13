@@ -5,6 +5,7 @@ export const getHandles = ({
 	saveBuyPrice,
 	saveSalePrice,
 	saveDescription,
+	saveImages,
 	saveCategories,
 	saveSuppliers
 }) => {
@@ -32,7 +33,10 @@ export const getHandles = ({
 		const description = e.target.value;
 		saveDescription(description);
 	};
-
+	const handleChangeImages = async e => {
+		const fileImages = e.target.files;
+		saveImages(fileImages);
+	};
 	const handleChangeCategories = e => {
 		const categoryId = e.target.value;
 		saveCategories(categoryId);
@@ -49,6 +53,7 @@ export const getHandles = ({
 		handleChangeBuyPrice,
 		handleChangeSalePrice,
 		handleChangeDescription,
+		handleChangeImages,
 		handleChangeCategories,
 		handleChangeSuppliers
 	};
