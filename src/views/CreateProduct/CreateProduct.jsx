@@ -17,9 +17,29 @@ export default function CreateProduct() {
 	const { suppliers, page, pageCount } = useSelector(
 		({ dataSuppliers }) => dataSuppliers
 	);
-	const { stock, buyPrice, salePrice, saveStock, saveBuyPrice, saveSalePrice } =
-		useCreateProduct();
+	const {
+		name,
+		subName,
+		stock,
+		buyPrice,
+		salePrice,
+		description,
+		saveName,
+		saveSubName,
+		saveStock,
+		saveBuyPrice,
+		saveSalePrice,
+		saveDescription
+	} = useCreateProduct();
 
+	const handleChangeName = e => {
+		const name = e.target.value;
+		saveName(name);
+	};
+	const handleChangeSubName = e => {
+		const subName = e.target.value;
+		saveSubName(subName);
+	};
 	const handleChangeStock = e => {
 		const stock = e.target.value;
 		saveStock(stock);
@@ -32,6 +52,10 @@ export default function CreateProduct() {
 		const salePrice = e.target.value;
 		saveSalePrice(salePrice);
 	};
+	const handleChangeDescription = e => {
+		const description = e.target.value;
+		saveDescription(description);
+	};
 	const handleChangeImages = async e => {
 		const fileImages = e.target.files;
 		const images = await uploadImagesCloudinary(fileImages);
@@ -41,8 +65,18 @@ export default function CreateProduct() {
 	return (
 		<div className={css.createProduct}>
 			<form className={css.form} onSubmit={e => e.preventDefault()}>
-				<InputText placeholder="Título" name="name" />
-				<InputText placeholder="Sub título" name="subName" />
+				<InputText
+					placeholder="Título"
+					name="name"
+					value={name.value}
+					onChange={handleChangeName}
+				/>
+				<InputText
+					placeholder="Sub título"
+					name="subName"
+					value={subName.value}
+					onChange={handleChangeSubName}
+				/>
 				<InputNumber
 					placeholder="Stock"
 					min={0}
@@ -61,7 +95,12 @@ export default function CreateProduct() {
 					value={salePrice.value}
 					onChange={handleChangeSalePrice}
 				/>
-				<Textarea placeholder="Descripción" name="description" />
+				<Textarea
+					placeholder="Descripción"
+					name="description"
+					value={description.value}
+					onChange={handleChangeDescription}
+				/>
 				<InputFile multiple onChange={handleChangeImages} />
 				<SelectMultiple about="Categorías" dataChecks={allCategories} />
 				<SelectMultiplePaged
