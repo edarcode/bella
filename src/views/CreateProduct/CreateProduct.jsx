@@ -1,28 +1,26 @@
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/buttons/Button/Button.jsx";
 import SelectMultiple from "../../components/common/SelectMultiple/SelectMultiple.jsx";
 import SelectMultiplePaged from "../../components/common/SelectMultiplePaged/SelectMultiplePaged.jsx";
+import Spinner from "../../components/common/Spinner/Spinner.jsx";
 import InputImages from "../../components/inputs/InputImages/InputImages.jsx";
 import InputNumber from "../../components/inputs/InputNumber/InputNumber.jsx";
 import InputText from "../../components/inputs/InputText/InputText.jsx";
 import Textarea from "../../components/inputs/Textarea/Textarea.jsx";
+import Alert from "../../components/pop-ups/Alert/Alert.jsx";
 import { useCreateProduct } from "../../hooks/useCreateProduct.js";
 import { savePage } from "../../redux/slices-control-panel/data-suppliers/dataSuppliers.js";
-import { fetchCreateProduct } from "../../utils/fetch-control-panel/fetchCreateProduct.js";
 import { getHandles } from "./handles/getHandles.js";
 import css from "./style.module.css";
 
 export default function CreateProduct() {
+	const inputImages = useRef(null);
 	const dispatch = useDispatch();
 	const { allCategories } = useSelector(({ categories }) => categories);
-	const { token } = useSelector(({ user }) => user);
+	const dataSuppliers = useSelector(({ dataSuppliers }) => dataSuppliers);
+
 	const {
-		suppliers: allSuppliers,
-		page,
-		pageCount
-	} = useSelector(({ dataSuppliers }) => dataSuppliers);
-	const {
-		isValidateDataFormCreateProduct, // no va incluido el campo de imagenes
 		name,
 		subName,
 		stock,
@@ -32,38 +30,29 @@ export default function CreateProduct() {
 		images,
 		categories,
 		suppliers,
+		isValidateDataFormCreateProduct,
+		submitCreateProduct,
+		loading,
+		success,
+		err,
+		clearSuccessAndErr,
 		...saveMethods
 	} = useCreateProduct();
 
-	const handles = getHandles(saveMethods);
-	const handleSubmitCreateProduct = async e => {
-		e.preventDefault();
-		if (!isValidateDataFormCreateProduct) return;
-		try {
-			const res = await fetchCreateProduct(
-				null,
-				{
-					name: name.value,
-					subName: subName.value,
-					stock: stock.value,
-					buyPrice: buyPrice.value,
-					salePrice: salePrice.value,
-					description: description.value,
-					categories,
-					images: images.value,
-					suppliers
-				},
-				{ token }
-			);
-			console.log(res);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	useEffect(() => {
+		if (inputImages && success) inputImages.current.value = null;
+	}, [success]);
+
+	const handles = getHandles({
+		...saveMethods,
+		isValidateDataFormCreateProduct,
+		submitCreateProduct
+	});
 
 	return (
 		<div className={css.createProduct}>
-			<form className={css.form} onSubmit={handleSubmitCreateProduct}>
+			<form className={css.form} onSubmit={handles.handleSubmitCreateProduct}>
+				<Spinner className={css.spinner} isVisible={loading} />
 				<InputText
 					placeholder="Título"
 					name="name"
@@ -101,6 +90,7 @@ export default function CreateProduct() {
 					onChange={handles.handleChangeDescription}
 				/>
 				<InputImages
+					innerRef={inputImages}
 					multiple
 					onChange={handles.handleChangeImages}
 					loading={images.loading}
@@ -115,9 +105,9 @@ export default function CreateProduct() {
 				/>
 				<SelectMultiplePaged
 					about="Proveedores"
-					dataChecks={allSuppliers}
-					page={page}
-					pageCount={pageCount}
+					dataChecks={dataSuppliers.suppliers}
+					page={dataSuppliers.page}
+					pageCount={dataSuppliers.pageCount}
 					onPage={newPage => dispatch(savePage(newPage))}
 					value={suppliers}
 					onChange={handles.handleChangeSuppliers}
@@ -125,6 +115,13 @@ export default function CreateProduct() {
 				<Button disabled={!isValidateDataFormCreateProduct}>
 					Crear producto
 				</Button>
+				<Alert
+					className={css.alert}
+					text={success || err}
+					textBtn="Ok"
+					isVisible={success || err}
+					onClick={clearSuccessAndErr}
+				/>
 			</form>
 		</div>
 	);

@@ -1,6 +1,10 @@
-import { ERR } from "../../constants/msgs.js";
+import { ERR, SUCCESS } from "../../constants/msgs.js";
 import {
+	CLEAR_SUCCESS_AND_ERR,
+	CREATE_PRODUCT,
+	ERR_CREATE_PRODUCT,
 	ERR_IMAGES,
+	LOADING_CREATE_PRODUCT,
 	LOADING_IMAGES,
 	SAVE_BUY_PRICE,
 	SAVE_CATEGORIES,
@@ -102,6 +106,34 @@ export const createProduct = (createProduct, { type, payload }) => {
 				suppliers: [...setSuppliers]
 			};
 		}
+		case CREATE_PRODUCT:
+			return {
+				...initialCreateProduct,
+				err: "",
+				loading: false,
+				success: payload || SUCCESS
+			};
+		case LOADING_CREATE_PRODUCT:
+			return {
+				...createProduct,
+				err: "",
+				loading: true,
+				success: ""
+			};
+		case ERR_CREATE_PRODUCT:
+			return {
+				...createProduct,
+				err: payload || ERR,
+				loading: false,
+				success: ""
+			};
+		case CLEAR_SUCCESS_AND_ERR:
+			return {
+				...createProduct,
+				err: "",
+				loading: false,
+				success: ""
+			};
 		default:
 			throw TypeError("Action err");
 	}

@@ -7,7 +7,9 @@ export const getHandles = ({
 	saveDescription,
 	saveImages,
 	saveCategories,
-	saveSuppliers
+	saveSuppliers,
+	isValidateDataFormCreateProduct,
+	submitCreateProduct
 }) => {
 	const handleChangeName = e => {
 		const name = e.target.value;
@@ -35,7 +37,7 @@ export const getHandles = ({
 	};
 	const handleChangeImages = async e => {
 		const fileImages = e.target.files;
-		saveImages(fileImages);
+		saveImages(fileImages); // esto es async
 	};
 	const handleChangeCategories = e => {
 		const categoryId = e.target.value;
@@ -44,6 +46,11 @@ export const getHandles = ({
 	const handleChangeSuppliers = e => {
 		const supplierId = e.target.value;
 		saveSuppliers(supplierId);
+	};
+	const handleSubmitCreateProduct = e => {
+		e.preventDefault();
+		if (!isValidateDataFormCreateProduct) return;
+		submitCreateProduct(); // esto es async
 	};
 
 	return {
@@ -55,6 +62,7 @@ export const getHandles = ({
 		handleChangeDescription,
 		handleChangeImages,
 		handleChangeCategories,
-		handleChangeSuppliers
+		handleChangeSuppliers,
+		handleSubmitCreateProduct
 	};
 };

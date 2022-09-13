@@ -1,6 +1,11 @@
 import { useReducer } from "react";
+import { useSelector } from "react-redux";
 import {
+	CLEAR_SUCCESS_AND_ERR,
+	CREATE_PRODUCT,
+	ERR_CREATE_PRODUCT,
 	ERR_IMAGES,
+	LOADING_CREATE_PRODUCT,
 	LOADING_IMAGES,
 	SAVE_BUY_PRICE,
 	SAVE_CATEGORIES,
@@ -16,6 +21,7 @@ import {
 	createProduct,
 	initialCreateProduct
 } from "../reducers/createProduct/createProduct.js";
+import { fetchCreateProduct } from "../utils/fetch-control-panel/fetchCreateProduct.js";
 import { uploadImagesCloudinary } from "../utils/uploadImagesCloudinary.js";
 
 export const useCreateProduct = () => {
@@ -23,6 +29,7 @@ export const useCreateProduct = () => {
 		createProduct,
 		initialCreateProduct
 	);
+	const { token } = useSelector(({ user }) => user);
 
 	const saveName = name => {
 		dispatch({ type: SAVE_NAME, payload: name });
@@ -56,6 +63,32 @@ export const useCreateProduct = () => {
 	};
 	const saveSuppliers = supplierId => {
 		dispatch({ type: SAVE_SUPPLIERS, payload: supplierId });
+	};
+	const submitCreateProduct = async () => {
+		try {
+			dispatch({ type: LOADING_CREATE_PRODUCT });
+			const { data } = await fetchCreateProduct(
+				null,
+				{
+					name: name.value,
+					subName: subName.value,
+					stock: stock.value,
+					buyPrice: buyPrice.value,
+					salePrice: salePrice.value,
+					description: description.value,
+					categories,
+					images: images.value,
+					suppliers
+				},
+				{ token }
+			);
+			dispatch({ type: CREATE_PRODUCT, payload: data.msg });
+		} catch (error) {
+			dispatch({ type: ERR_CREATE_PRODUCT });
+		}
+	};
+	const clearSuccessAndErr = () => {
+		dispatch({ type: CLEAR_SUCCESS_AND_ERR });
 	};
 	const {
 		name,
@@ -99,6 +132,8 @@ export const useCreateProduct = () => {
 		saveImages,
 		saveCategories,
 		saveSuppliers,
-		isValidateDataFormCreateProduct
+		isValidateDataFormCreateProduct,
+		submitCreateProduct,
+		clearSuccessAndErr
 	};
 };

@@ -4,6 +4,7 @@ import RenderIcon from "./RenderIcon.jsx";
 import css from "./style.module.css";
 
 export default function InputImages({
+	innerRef,
 	loading,
 	err,
 	success,
@@ -30,6 +31,7 @@ export default function InputImages({
 			<RenderIcon loading={loading} err={err} success={success} />
 			<input
 				{...props}
+				ref={innerRef}
 				type="file"
 				className={css.inputFile}
 				onFocus={handleFocus}
