@@ -16,7 +16,10 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
+	left: 0;
+	right: 0;
 	z-index: 30;
+	border-radius: initial;
 }
 .iconMenu {
 	margin-left: 6.5px;
@@ -25,9 +28,10 @@
 	width: 60px;
 	height: 60px;
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
 	.asideCollapse {
 		position: initial;
 		height: initial;
+		border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 	}
 }
