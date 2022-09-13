@@ -8,7 +8,7 @@ import InputText from "../../components/inputs/InputText/InputText.jsx";
 import Textarea from "../../components/inputs/Textarea/Textarea.jsx";
 import { useCreateProduct } from "../../hooks/useCreateProduct.js";
 import { savePage } from "../../redux/slices-control-panel/data-suppliers/dataSuppliers.js";
-import { uploadImagesCloudinary } from "../../utils/uploadImagesCloudinary.js";
+import { getHandles } from "./handles/getHandles.js";
 import css from "./style.module.css";
 
 export default function CreateProduct() {
@@ -28,53 +28,10 @@ export default function CreateProduct() {
 		description,
 		categories,
 		suppliers,
-		saveName,
-		saveSubName,
-		saveStock,
-		saveBuyPrice,
-		saveSalePrice,
-		saveDescription,
-		saveCategories,
-		saveSuppliers
+		...saveMethods
 	} = useCreateProduct();
 
-	const handleChangeName = e => {
-		const name = e.target.value;
-		saveName(name);
-	};
-	const handleChangeSubName = e => {
-		const subName = e.target.value;
-		saveSubName(subName);
-	};
-	const handleChangeStock = e => {
-		const stock = e.target.value;
-		saveStock(stock);
-	};
-	const handleChangeBuyPrice = e => {
-		const buyPrice = e.target.value;
-		saveBuyPrice(buyPrice);
-	};
-	const handleChangeSalePrice = e => {
-		const salePrice = e.target.value;
-		saveSalePrice(salePrice);
-	};
-	const handleChangeDescription = e => {
-		const description = e.target.value;
-		saveDescription(description);
-	};
-	const handleChangeImages = async e => {
-		const fileImages = e.target.files;
-		const images = await uploadImagesCloudinary(fileImages);
-		console.log(images);
-	};
-	const handleChangeCategories = e => {
-		const categoryId = e.target.value;
-		saveCategories(categoryId);
-	};
-	const handleChangeSuppliers = e => {
-		const supplierId = e.target.value;
-		saveSuppliers(supplierId);
-	};
+	const handles = getHandles(saveMethods);
 
 	return (
 		<div className={css.createProduct}>
@@ -83,44 +40,44 @@ export default function CreateProduct() {
 					placeholder="Título"
 					name="name"
 					value={name.value}
-					onChange={handleChangeName}
+					onChange={handles.handleChangeName}
 				/>
 				<InputText
 					placeholder="Sub título"
 					name="subName"
 					value={subName.value}
-					onChange={handleChangeSubName}
+					onChange={handles.handleChangeSubName}
 				/>
 				<InputNumber
 					placeholder="Stock"
 					min={0}
 					value={stock.value}
-					onChange={handleChangeStock}
+					onChange={handles.handleChangeStock}
 				/>
 				<InputNumber
 					placeholder="Precio de compra"
 					min={0}
 					value={buyPrice.value}
-					onChange={handleChangeBuyPrice}
+					onChange={handles.handleChangeBuyPrice}
 				/>
 				<InputNumber
 					placeholder="Precio de venta"
 					min={0}
 					value={salePrice.value}
-					onChange={handleChangeSalePrice}
+					onChange={handles.handleChangeSalePrice}
 				/>
 				<Textarea
 					placeholder="Descripción"
 					name="description"
 					value={description.value}
-					onChange={handleChangeDescription}
+					onChange={handles.handleChangeDescription}
 				/>
-				<InputFile multiple onChange={handleChangeImages} />
+				<InputFile multiple onChange={handles.handleChangeImages} />
 				<SelectMultiple
 					about="Categorías"
 					dataChecks={allCategories}
 					value={categories}
-					onChange={handleChangeCategories}
+					onChange={handles.handleChangeCategories}
 				/>
 				<SelectMultiplePaged
 					about="Proveedores"
@@ -129,7 +86,7 @@ export default function CreateProduct() {
 					pageCount={pageCount}
 					onPage={newPage => dispatch(savePage(newPage))}
 					value={suppliers}
-					onChange={handleChangeSuppliers}
+					onChange={handles.handleChangeSuppliers}
 				/>
 				<Button>Crear producto</Button>
 			</form>
