@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import {
 	SAVE_BUY_PRICE,
+	SAVE_CATEGORIES,
 	SAVE_DESCRIPTION,
 	SAVE_NAME,
 	SAVE_SALE_PRICE,
@@ -36,6 +37,9 @@ export const useCreateProduct = () => {
 	const saveDescription = description => {
 		dispatch({ type: SAVE_DESCRIPTION, payload: description });
 	};
+	const saveCategories = description => {
+		dispatch({ type: SAVE_CATEGORIES, payload: description });
+	};
 
 	return {
 		...dataFormCreateProduct,
@@ -44,6 +48,7 @@ export const useCreateProduct = () => {
 		saveStock,
 		saveBuyPrice,
 		saveSalePrice,
-		saveDescription
+		saveDescription,
+		saveCategories
 	};
 };

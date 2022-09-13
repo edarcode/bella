@@ -1,5 +1,6 @@
 import {
 	SAVE_BUY_PRICE,
+	SAVE_CATEGORIES,
 	SAVE_DESCRIPTION,
 	SAVE_NAME,
 	SAVE_SALE_PRICE,
@@ -54,7 +55,17 @@ export const createProduct = (createProduct, { type, payload }) => {
 				...createProduct,
 				description: { value: payload, err: "" }
 			};
+		case SAVE_CATEGORIES: {
+			const setCategories = new Set(createProduct.categories);
+			const categoryId = Number(payload);
+			if (!setCategories.has(categoryId)) setCategories.add(categoryId);
+			else setCategories.delete(categoryId);
 
+			return {
+				...createProduct,
+				categories: [...setCategories]
+			};
+		}
 		default:
 			throw TypeError("Action err");
 	}

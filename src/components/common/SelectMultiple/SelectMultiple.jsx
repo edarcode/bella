@@ -4,7 +4,13 @@ import css from "./style.module.css";
 import Arrow from "./svgs/Arrow.jsx";
 import WrapperAllChecks from "./WrapperAllChecks.jsx";
 
-export default function SelectMultiple({ about, dataChecks, className }) {
+export default function SelectMultiple({
+	about,
+	dataChecks,
+	className,
+	value,
+	onChange
+}) {
 	const [isCollapse, setIsCollapse] = useState(false);
 	const finallyClassName = calcClassName({
 		css,
@@ -24,7 +30,12 @@ export default function SelectMultiple({ about, dataChecks, className }) {
 					style={isCollapse ? { transform: "rotate(-90deg)" } : {}}
 				/>
 			</button>
-			<WrapperAllChecks dataChecks={dataChecks} isCollapse={isCollapse} />
+			<WrapperAllChecks
+				dataChecks={dataChecks}
+				isCollapse={isCollapse}
+				value={value}
+				onChange={onChange}
+			/>
 		</div>
 	);
 }

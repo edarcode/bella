@@ -24,12 +24,14 @@ export default function CreateProduct() {
 		buyPrice,
 		salePrice,
 		description,
+		categories,
 		saveName,
 		saveSubName,
 		saveStock,
 		saveBuyPrice,
 		saveSalePrice,
-		saveDescription
+		saveDescription,
+		saveCategories
 	} = useCreateProduct();
 
 	const handleChangeName = e => {
@@ -60,6 +62,10 @@ export default function CreateProduct() {
 		const fileImages = e.target.files;
 		const images = await uploadImagesCloudinary(fileImages);
 		console.log(images);
+	};
+	const handleChangeCategories = e => {
+		const categoryId = e.target.value;
+		saveCategories(categoryId);
 	};
 
 	return (
@@ -102,7 +108,12 @@ export default function CreateProduct() {
 					onChange={handleChangeDescription}
 				/>
 				<InputFile multiple onChange={handleChangeImages} />
-				<SelectMultiple about="Categorías" dataChecks={allCategories} />
+				<SelectMultiple
+					about="Categorías"
+					dataChecks={allCategories}
+					value={categories}
+					onChange={handleChangeCategories}
+				/>
 				<SelectMultiplePaged
 					about="Proveedores"
 					dataChecks={suppliers}
