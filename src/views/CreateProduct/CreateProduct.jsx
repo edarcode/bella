@@ -8,6 +8,7 @@ import InputText from "../../components/inputs/InputText/InputText.jsx";
 import Textarea from "../../components/inputs/Textarea/Textarea.jsx";
 import { useCreateProduct } from "../../hooks/useCreateProduct.js";
 import { savePage } from "../../redux/slices-control-panel/data-suppliers/dataSuppliers.js";
+import { fetchCreateProduct } from "../../utils/fetch-control-panel/fetchCreateProduct.js";
 import { uploadImagesCloudinary } from "../../utils/uploadImagesCloudinary.js";
 import { getHandles } from "./handles/getHandles.js";
 import css from "./style.module.css";
@@ -15,6 +16,7 @@ import css from "./style.module.css";
 export default function CreateProduct() {
 	const dispatch = useDispatch();
 	const { allCategories } = useSelector(({ categories }) => categories);
+	const { token } = useSelector(({ user }) => user);
 	const {
 		suppliers: allSuppliers,
 		page,
@@ -38,8 +40,28 @@ export default function CreateProduct() {
 		e.preventDefault();
 		if (!isValidateDataFormCreateProduct) return;
 		const fileImages = e.target.images.files;
-		const images = await uploadImagesCloudinary(fileImages);
-		if (!images.length) return null;
+		try {
+			const images = await uploadImagesCloudinary(fileImages);
+			if (!images.length) return null;
+			const res = await fetchCreateProduct(
+				null,
+				{
+					name: name.value,
+					subName: subName.value,
+					stock: stock.value,
+					buyPrice: buyPrice.value,
+					salePrice: salePrice.value,
+					description: description.value,
+					categories,
+					images,
+					suppliers
+				},
+				{ token }
+			);
+			console.log(res);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
