@@ -1,5 +1,3 @@
-import { uploadImagesCloudinary } from "../../../utils/uploadImagesCloudinary.js";
-
 export const getHandles = ({
 	saveName,
 	saveSubName,
@@ -34,11 +32,7 @@ export const getHandles = ({
 		const description = e.target.value;
 		saveDescription(description);
 	};
-	const handleChangeImages = async e => {
-		const fileImages = e.target.files;
-		const images = await uploadImagesCloudinary(fileImages);
-		console.log(images);
-	};
+
 	const handleChangeCategories = e => {
 		const categoryId = e.target.value;
 		saveCategories(categoryId);
@@ -55,7 +49,6 @@ export const getHandles = ({
 		handleChangeBuyPrice,
 		handleChangeSalePrice,
 		handleChangeDescription,
-		handleChangeImages,
 		handleChangeCategories,
 		handleChangeSuppliers
 	};

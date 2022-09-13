@@ -44,6 +44,33 @@ export const useCreateProduct = () => {
 	const saveSuppliers = supplierId => {
 		dispatch({ type: SAVE_SUPPLIERS, payload: supplierId });
 	};
+	const {
+		name,
+		subName,
+		stock,
+		buyPrice,
+		salePrice,
+		description,
+		categories,
+		suppliers
+	} = dataFormCreateProduct;
+	const isValidateDataFormCreateProduct =
+		name.value &&
+		!name.err &&
+		subName.value &&
+		!subName.err &&
+		stock.value &&
+		!stock.err &&
+		buyPrice.value &&
+		!buyPrice.err &&
+		salePrice.value &&
+		!salePrice.err &&
+		description.value &&
+		!description.err &&
+		categories &&
+		categories.length &&
+		suppliers &&
+		suppliers.length;
 
 	return {
 		...dataFormCreateProduct,
@@ -54,6 +81,7 @@ export const useCreateProduct = () => {
 		saveSalePrice,
 		saveDescription,
 		saveCategories,
-		saveSuppliers
+		saveSuppliers,
+		isValidateDataFormCreateProduct
 	};
 };

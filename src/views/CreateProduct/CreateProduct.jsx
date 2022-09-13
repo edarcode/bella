@@ -8,6 +8,7 @@ import InputText from "../../components/inputs/InputText/InputText.jsx";
 import Textarea from "../../components/inputs/Textarea/Textarea.jsx";
 import { useCreateProduct } from "../../hooks/useCreateProduct.js";
 import { savePage } from "../../redux/slices-control-panel/data-suppliers/dataSuppliers.js";
+import { uploadImagesCloudinary } from "../../utils/uploadImagesCloudinary.js";
 import { getHandles } from "./handles/getHandles.js";
 import css from "./style.module.css";
 
@@ -20,6 +21,7 @@ export default function CreateProduct() {
 		pageCount
 	} = useSelector(({ dataSuppliers }) => dataSuppliers);
 	const {
+		isValidateDataFormCreateProduct, // no va incluido el campo de imagenes
 		name,
 		subName,
 		stock,
@@ -32,10 +34,17 @@ export default function CreateProduct() {
 	} = useCreateProduct();
 
 	const handles = getHandles(saveMethods);
+	const handleSubmitCreateProduct = async e => {
+		e.preventDefault();
+		if (!isValidateDataFormCreateProduct) return;
+		const fileImages = e.target.images.files;
+		const images = await uploadImagesCloudinary(fileImages);
+		if (!images.length) return null;
+	};
 
 	return (
 		<div className={css.createProduct}>
-			<form className={css.form} onSubmit={e => e.preventDefault()}>
+			<form className={css.form} onSubmit={handleSubmitCreateProduct}>
 				<InputText
 					placeholder="Título"
 					name="name"
@@ -72,7 +81,11 @@ export default function CreateProduct() {
 					value={description.value}
 					onChange={handles.handleChangeDescription}
 				/>
-				<InputFile multiple onChange={handles.handleChangeImages} />
+				<InputFile
+					name="images"
+					multiple
+					onChange={handles.handleChangeImages}
+				/>
 				<SelectMultiple
 					about="Categorías"
 					dataChecks={allCategories}
@@ -88,7 +101,9 @@ export default function CreateProduct() {
 					value={suppliers}
 					onChange={handles.handleChangeSuppliers}
 				/>
-				<Button>Crear producto</Button>
+				<Button disabled={!isValidateDataFormCreateProduct}>
+					Crear producto
+				</Button>
 			</form>
 		</div>
 	);
