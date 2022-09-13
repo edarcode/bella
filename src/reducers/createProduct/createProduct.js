@@ -5,7 +5,8 @@ import {
 	SAVE_NAME,
 	SAVE_SALE_PRICE,
 	SAVE_STOCK,
-	SAVE_SUBNAME
+	SAVE_SUBNAME,
+	SAVE_SUPPLIERS
 } from "./actions.js";
 
 export const initialCreateProduct = {
@@ -64,6 +65,17 @@ export const createProduct = (createProduct, { type, payload }) => {
 			return {
 				...createProduct,
 				categories: [...setCategories]
+			};
+		}
+		case SAVE_SUPPLIERS: {
+			const setSuppliers = new Set(createProduct.suppliers);
+			const supplierId = Number(payload);
+			if (!setSuppliers.has(supplierId)) setSuppliers.add(supplierId);
+			else setSuppliers.delete(supplierId);
+
+			return {
+				...createProduct,
+				suppliers: [...setSuppliers]
 			};
 		}
 		default:

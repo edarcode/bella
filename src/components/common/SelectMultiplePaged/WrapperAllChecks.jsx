@@ -7,7 +7,9 @@ export default function WrapperAllChecks({
 	isCollapse,
 	page,
 	onPage,
-	pageCount
+	pageCount,
+	value,
+	onChange
 }) {
 	const handleClickPageNext = () => {
 		if (isDisableBtnArrowRight) return;
@@ -40,7 +42,12 @@ export default function WrapperAllChecks({
 			</button>
 			{dataChecks.map(({ id, name }) => (
 				<label key={id} className={css.wrapperCheck}>
-					<input type="checkbox" value={id} />
+					<input
+						type="checkbox"
+						value={id}
+						checked={value.includes(id)}
+						onChange={onChange}
+					/>
 					<span className={css.nameCheck}>{splitNameCheck(name)}</span>
 				</label>
 			))}

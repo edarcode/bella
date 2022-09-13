@@ -10,7 +10,9 @@ export default function SelectMultiplePaged({
 	className,
 	page,
 	pageCount,
-	onPage
+	onPage,
+	value,
+	onChange
 }) {
 	const [isCollapse, setIsCollapse] = useState(false);
 	const finallyClassName = calcClassName({
@@ -37,6 +39,8 @@ export default function SelectMultiplePaged({
 				onPage={onPage}
 				dataChecks={dataChecks}
 				isCollapse={isCollapse}
+				value={value}
+				onChange={onChange}
 			/>
 		</div>
 	);

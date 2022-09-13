@@ -6,7 +6,8 @@ import {
 	SAVE_NAME,
 	SAVE_SALE_PRICE,
 	SAVE_STOCK,
-	SAVE_SUBNAME
+	SAVE_SUBNAME,
+	SAVE_SUPPLIERS
 } from "../reducers/createProduct/actions.js";
 import {
 	createProduct,
@@ -37,8 +38,11 @@ export const useCreateProduct = () => {
 	const saveDescription = description => {
 		dispatch({ type: SAVE_DESCRIPTION, payload: description });
 	};
-	const saveCategories = description => {
-		dispatch({ type: SAVE_CATEGORIES, payload: description });
+	const saveCategories = categoryId => {
+		dispatch({ type: SAVE_CATEGORIES, payload: categoryId });
+	};
+	const saveSuppliers = supplierId => {
+		dispatch({ type: SAVE_SUPPLIERS, payload: supplierId });
 	};
 
 	return {
@@ -49,6 +53,7 @@ export const useCreateProduct = () => {
 		saveBuyPrice,
 		saveSalePrice,
 		saveDescription,
-		saveCategories
+		saveCategories,
+		saveSuppliers
 	};
 };

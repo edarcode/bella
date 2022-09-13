@@ -14,9 +14,11 @@ import css from "./style.module.css";
 export default function CreateProduct() {
 	const dispatch = useDispatch();
 	const { allCategories } = useSelector(({ categories }) => categories);
-	const { suppliers, page, pageCount } = useSelector(
-		({ dataSuppliers }) => dataSuppliers
-	);
+	const {
+		suppliers: allSuppliers,
+		page,
+		pageCount
+	} = useSelector(({ dataSuppliers }) => dataSuppliers);
 	const {
 		name,
 		subName,
@@ -25,13 +27,15 @@ export default function CreateProduct() {
 		salePrice,
 		description,
 		categories,
+		suppliers,
 		saveName,
 		saveSubName,
 		saveStock,
 		saveBuyPrice,
 		saveSalePrice,
 		saveDescription,
-		saveCategories
+		saveCategories,
+		saveSuppliers
 	} = useCreateProduct();
 
 	const handleChangeName = e => {
@@ -66,6 +70,10 @@ export default function CreateProduct() {
 	const handleChangeCategories = e => {
 		const categoryId = e.target.value;
 		saveCategories(categoryId);
+	};
+	const handleChangeSuppliers = e => {
+		const supplierId = e.target.value;
+		saveSuppliers(supplierId);
 	};
 
 	return (
@@ -116,10 +124,12 @@ export default function CreateProduct() {
 				/>
 				<SelectMultiplePaged
 					about="Proveedores"
-					dataChecks={suppliers}
+					dataChecks={allSuppliers}
 					page={page}
 					pageCount={pageCount}
 					onPage={newPage => dispatch(savePage(newPage))}
+					value={suppliers}
+					onChange={handleChangeSuppliers}
 				/>
 				<Button>Crear producto</Button>
 			</form>
