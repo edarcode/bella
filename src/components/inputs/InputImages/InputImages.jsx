@@ -27,7 +27,7 @@ export default function InputImages({
 
 	return (
 		<label className={finallyClassName} ref={label}>
-			<span>Cargar imgs</span>
+			<span>Imágenes</span>
 			<RenderIcon loading={loading} err={err} success={success} />
 			<input
 				{...props}

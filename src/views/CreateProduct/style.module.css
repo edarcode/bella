@@ -4,15 +4,41 @@
 	place-items: center;
 	padding: var(--padding-md);
 }
-.form {
-	position: relative;
-	display: grid;
-	gap: var(--gap-md);
-}
 .spinner,
 .alert {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+.form {
+	position: relative;
+	display: grid;
+	gap: var(--gap-md);
+	grid-template-columns: 1fr 1fr;
+	max-width: 400px;
+}
+.name,
+.subName,
+.categories,
+.suppliers,
+.btnSubmit,
+.description {
+	grid-column: span 2;
+}
+.stock {
+}
+.buyPrice,
+.salePrice {
+}
+.description {
+}
+.images {
+	grid-row: 4 / 5;
+	grid-column: 2 / 3;
+}
+.categories,
+.suppliers {
+}
+.btnSubmit {
 }

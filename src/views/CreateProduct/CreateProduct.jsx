@@ -61,45 +61,43 @@ export default function CreateProduct() {
 					onClick={clearSuccessAndErr}
 				/>
 				<InputText
+					className={css.name}
 					placeholder="Título"
-					name="name"
 					value={name.value}
 					onChange={handles.handleChangeName}
 				/>
 				<InputText
+					className={css.subName}
 					placeholder="Sub título"
-					name="subName"
 					value={subName.value}
 					onChange={handles.handleChangeSubName}
 				/>
 				<InputNumber
-					placeholder="Stock"
-					err={stock.err}
-					min={0}
-					value={stock.value}
-					onChange={handles.handleChangeStock}
-				/>
-				<InputNumber
-					placeholder="Precio de compra"
+					className={css.buyPrice}
+					placeholder="$ compra"
 					err={buyPrice.err}
 					min={0}
 					value={buyPrice.value}
 					onChange={handles.handleChangeBuyPrice}
 				/>
 				<InputNumber
-					placeholder="Precio de venta"
+					className={css.salePrice}
+					placeholder="$ venta"
 					min={0}
 					err={salePrice.err}
 					value={salePrice.value}
 					onChange={handles.handleChangeSalePrice}
 				/>
-				<Textarea
-					placeholder="Descripción"
-					name="description"
-					value={description.value}
-					onChange={handles.handleChangeDescription}
+				<InputNumber
+					className={css.stock}
+					placeholder="Stock"
+					err={stock.err}
+					min={0}
+					value={stock.value}
+					onChange={handles.handleChangeStock}
 				/>
 				<InputImages
+					className={css.images}
 					innerRef={inputImages}
 					multiple
 					onChange={handles.handleChangeImages}
@@ -107,13 +105,22 @@ export default function CreateProduct() {
 					err={images.err}
 					success={images.success}
 				/>
+				<Textarea
+					className={css.description}
+					placeholder="Descripción"
+					name="description"
+					value={description.value}
+					onChange={handles.handleChangeDescription}
+				/>
 				<SelectMultiple
+					className={css.categories}
 					about="Categorías"
 					dataChecks={allCategories}
 					value={categories}
 					onChange={handles.handleChangeCategories}
 				/>
 				<SelectMultiplePaged
+					className={css.suppliers}
 					about="Proveedores"
 					dataChecks={dataSuppliers.suppliers}
 					page={dataSuppliers.page}
@@ -122,7 +129,10 @@ export default function CreateProduct() {
 					value={suppliers}
 					onChange={handles.handleChangeSuppliers}
 				/>
-				<Button disabled={!isValidateDataFormCreateProduct}>
+				<Button
+					className={css.btnSubmit}
+					disabled={!isValidateDataFormCreateProduct}
+				>
 					Crear producto
 				</Button>
 			</form>
