@@ -1,4 +1,6 @@
 import { ERR, SUCCESS } from "../../constants/msgs.js";
+import { validatePrice } from "../../utils/validations/validatePrice.js";
+import { validateStock } from "../../utils/validations/validateStock.js";
 import {
 	CLEAR_SUCCESS_AND_ERR,
 	CREATE_PRODUCT,
@@ -47,17 +49,17 @@ export const createProduct = (createProduct, { type, payload }) => {
 		case SAVE_STOCK:
 			return {
 				...createProduct,
-				stock: { value: Number(payload) || "", err: "" }
+				stock: { value: Number(payload) || "", err: validateStock(payload) }
 			};
 		case SAVE_BUY_PRICE:
 			return {
 				...createProduct,
-				buyPrice: { value: Number(payload) || "", err: "" }
+				buyPrice: { value: Number(payload) || "", err: validatePrice(payload) }
 			};
 		case SAVE_SALE_PRICE:
 			return {
 				...createProduct,
-				salePrice: { value: Number(payload) || "", err: "" }
+				salePrice: { value: Number(payload) || "", err: validatePrice(payload) }
 			};
 		case SAVE_DESCRIPTION:
 			return {

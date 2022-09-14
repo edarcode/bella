@@ -53,6 +53,13 @@ export default function CreateProduct() {
 		<div className={css.createProduct}>
 			<form className={css.form} onSubmit={handles.handleSubmitCreateProduct}>
 				<Spinner className={css.spinner} isVisible={loading} />
+				<Alert
+					className={css.alert}
+					text={success || err}
+					textBtn="Ok"
+					isVisible={success || err}
+					onClick={clearSuccessAndErr}
+				/>
 				<InputText
 					placeholder="Título"
 					name="name"
@@ -67,12 +74,14 @@ export default function CreateProduct() {
 				/>
 				<InputNumber
 					placeholder="Stock"
+					err={stock.err}
 					min={0}
 					value={stock.value}
 					onChange={handles.handleChangeStock}
 				/>
 				<InputNumber
 					placeholder="Precio de compra"
+					err={buyPrice.err}
 					min={0}
 					value={buyPrice.value}
 					onChange={handles.handleChangeBuyPrice}
@@ -80,6 +89,7 @@ export default function CreateProduct() {
 				<InputNumber
 					placeholder="Precio de venta"
 					min={0}
+					err={salePrice.err}
 					value={salePrice.value}
 					onChange={handles.handleChangeSalePrice}
 				/>
@@ -115,13 +125,6 @@ export default function CreateProduct() {
 				<Button disabled={!isValidateDataFormCreateProduct}>
 					Crear producto
 				</Button>
-				<Alert
-					className={css.alert}
-					text={success || err}
-					textBtn="Ok"
-					isVisible={success || err}
-					onClick={clearSuccessAndErr}
-				/>
 			</form>
 		</div>
 	);
