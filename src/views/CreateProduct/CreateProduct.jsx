@@ -10,6 +10,7 @@ import InputText from "../../components/inputs/InputText/InputText.jsx";
 import Textarea from "../../components/inputs/Textarea/Textarea.jsx";
 import Alert from "../../components/pop-ups/Alert/Alert.jsx";
 import { useCreateProduct } from "../../hooks/useCreateProduct.js";
+import { getDataProducts } from "../../redux/slices-control-panel/data-products/thunks/getDataProducts.js";
 import { savePage } from "../../redux/slices-control-panel/data-suppliers/dataSuppliers.js";
 import { getHandles } from "./handles/getHandles.js";
 import css from "./style.module.css";
@@ -19,6 +20,7 @@ export default function CreateProduct() {
 	const dispatch = useDispatch();
 	const { allCategories } = useSelector(({ categories }) => categories);
 	const dataSuppliers = useSelector(({ dataSuppliers }) => dataSuppliers);
+	const { token } = useSelector(({ user }) => user);
 
 	const {
 		name,
@@ -58,7 +60,10 @@ export default function CreateProduct() {
 					text={success || err}
 					textBtn="Ok"
 					isVisible={success || err}
-					onClick={clearSuccessAndErr}
+					onClick={() => {
+						dispatch(getDataProducts(null, null, { token }));
+						clearSuccessAndErr();
+					}}
 				/>
 				<InputText
 					className={css.name}

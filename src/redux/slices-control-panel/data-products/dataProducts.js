@@ -70,7 +70,7 @@ export const dataProducts = createSlice({
 			dataProducts.filters.categoryId = payload;
 			dataProducts.page = 0;
 		},
-		resetSalePrice: (dataProducts, { payload }) => {
+		resetSalePrice: dataProducts => {
 			dataProducts.filters.minSalePrice = 0;
 			dataProducts.filters.maxSalePrice = 0;
 		}
