@@ -8,4 +8,4 @@ export const DETAIL_PRODUCT = `${BASE_URL_API}/products`;
 export const ALL_CATEGORIES = `${BASE_URL_API}/categories`;
 export const REGISTER = `${BASE_URL_API}/auth/register`;
 export const LOGIN = `${BASE_URL_API}/auth/login`;
-export const TOKEN_VERIFY = `${BASE_URL_API}/auth/token/verify`;
+export const TOKEN_VERIFY = `${BASE_URL_API}/auth/verify-token`;

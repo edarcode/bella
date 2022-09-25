@@ -9,7 +9,7 @@ export const useGetProductsClient = () => {
 	useEffect(() => {
 		const controller = new AbortController();
 		dispatch(
-			getDataProducts(controller.signal, { page: getRandomBetween(0, 4) })
+			getDataProducts(controller.signal, { page: getRandomBetween(0, 0) })
 		);
 		return () => controller.abort();
 	}, [dispatch]);

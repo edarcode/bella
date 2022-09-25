@@ -18,7 +18,7 @@ export default function ProductCard({
 	return (
 		<div className={css.card}>
 			<ActiveCircle className={css.activeCircle} isAvtive={active} />
-			<img className={css.img} src={images[0].small} alt={name} />
+			<img className={css.img} src={images[0].original} alt={name} />
 			<div className={css.wrapper1}>
 				<span className={css.name}>{name}</span>
 				<span className={css.subName}>{subName}</span>
